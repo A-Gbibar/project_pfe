@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+}
+
+:root {
+    --background-color: #fafafb;
+    --ather-bockground-color:#f6f5f8;
+    --white-color: #ffff;
+    --main-color: #45BBFF;
+    --sconde-color: #33D6E8;
+    --three-color: #38FFDE;
+    --bleu-color: #384CFF;
+    --end-color: #3375E8;
+    --text-color: #222E99;
+    --ather-text-color:#9aa0a8;
+    --main-trantion: all 0.6s ease-in-out;
+    --border-radius: 8px;
+    --ather-border-radius:14px;
+
+    --title-box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px;
+    --sub-box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 6%) 0px 1px 2px 0;
+    --borde-box-shadow: rgb(3 102 214 / 30%) 0px 0px 0px 3px;
+    --box-shadow:rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--end-color);
+    border-radius: var(--border-radius);
+}
+
+body {
+    background-color: var(--background-color);
+}
+a{
+    text-decoration: none;
+}
+img{
+    width: 100%;
+}
+.btn-button {
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    background-color: var(--main-color);
+    color: var(--white-color);
+    font-size: 1.1em;
+    text-transform: capitalize;
+    border-radius: var(--border-radius);
+    transition: var(--main-trantion);
+}
+
+@media (max-width:992px) {
+    .btn-button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
+
+.btn-button:hover {
+    background-color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+.display-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-flex-spece-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    box-shadow: var(--title-box-shadow);
+    border-radius: var(--border-radius);
+}
+
+p {
+    text-align: justify;
+}
+.HoverInfo{
+    position: relative;
+}
+.HoverInfo::before{
+    content: attr(data-info);
+    font-size: 0.5em;
+    position: absolute;
+    width: fit-content;
+    left: var(--left-var);
+    background-color: var(--white-color);
+    padding: 5px 18px;
+    top: 15px;
+    border-radius: 10px 30px 30px 10px;
+    box-shadow: var(--box-shadow);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--main-trantion);
+}
+.HoverInfo:hover::before{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+}
+
+
+/* ==========================style======input====================== */
+
+
+
+
+form label{
+    width: 100%;
+    position: relative;
+    /* background-color: var(--white-color); */
+}
+
+  form label .fild,
+  form .stars .star{
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid var(--sconde-color) ;
+    padding-left: 20px;
+    height: 55px;
+    transition:var(--main-trantion);
+}
+  form label  textarea.fild{
+    height:100px;
+    resize: none;
+    padding-top: 15px;
+}
+
+  form label .fild:focus ~ span,
+  form label .fild:valid ~ span{
+    transform: translateY(-18px) translateX(14px);
+    background: var(--sconde-color);
+    padding: 5px 10px;
+    opacity: 1;
+    border-radius: var(--border-radius);
+    color:var(--white-color);
+}
+  form label .fild:focus,
+  form label .fild:valid{
+    box-shadow: var(--borde-box-shadow);
+    border-bottom: none;
+    border-radius: var(--border-radius);
+}
+  form .stars .clickstart span{
+    color:var(--sconde-color);
+    font-size: 1.6em;
+    margin: 0 10px;
+    opacity: 0.4;
+    cursor: pointer;
+}
+  form .stars span.active{
+    color: gold;
+    opacity: 1;
+}
+  form .stars span{
+    color: var(--sconde-color);
+    font-size: 1.3em;
+}
+  .number input{
+    display: none;
+} 
+@media (max-width:1150px) {
+      form{
+        width: 90%;
+    }
+
+}
+@media (max-width:770px) {
+      form .stars .clickstart span{
+        font-size: 1.3em;
+        margin: 0 5px;
+    }
+}
+@media (max-width:530px) {
+      form .stars .clickstart span{
+        font-size: 1em;
+        margin: 0 3px;
+    }
+}
+@media (max-width:430px) {
+      form .stars .clickstart span{
+        font-size: 0.8em;
+        margin: 0 3px;
+    }
+      form .stars .star{
+        padding-left: 0;
+    }
+      .number {
+        font-size: 0.8em;
+    }
+}
+
+form .radios{
+    grid-template-columns: 20% 1fr;
+}
+
+ form .radios input[type="radio"] {
+    display: none;
+}
+
+ form .radios label span {
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.4s ease;
+    padding: 10px 20px 10px 10px;
+    border-radius: 31px;
+    margin-bottom: 5px;
+}
+
+ form .radios label span::before {
+    content: "";
+    background-color: var(--ather-bockground-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 20px;
+    transition: 0.25s ease;
+    box-shadow: inset 0 0 0 2px var(--main-color);
+}
+
+ form .radios input[type="radio"]:checked+span::before {
+    box-shadow: inset 0 0 0 4px var(--main-color);
+}
+
+ form .radios label span:hover,
+ form .radios input[type="radio"]:checked+span {
+    background-color:  var(--three-color);
+    justify-content: space-evenly;
+}
+
+ form .radios {
+    width: 85%;
+    height: 70px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--borde-box-shadow);
+}
+
+ form .radios>span:first-child {
+    font-size: 1.1em;
+    color: var(--three-color);
+    border-right: 3px solid #63a1f2ac;
+    height: 100%;
+}
+
+
+/* _____________________________________show and Update_______________________________________ */
+
+.textAndInput input{
+    padding: 9px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sub-box-shadow);
+    background-color: transparent;
+}
+.textAndInput input:focus{
+    box-shadow: var(--borde-box-shadow);
+}
+.noParmiter input{
+    font-size: 1em;
+    box-shadow: none;
+    text-align: left;
+    color: var(--ather-text-color);
+}
+.noParmiter{
+    padding: 10px;
+    border-bottom:2px solid var(--ather-text-color) ;
+    background-color:#45bbff1a;
+}
+.noParmiter:nth-child(even){
+    background-color: var(   --ather-bockground-color);
+}
+.noParmiter span{
+    width: 151px;
+}

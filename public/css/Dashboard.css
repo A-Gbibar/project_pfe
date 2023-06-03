@@ -1,0 +1,248 @@
+body {
+    background-color: var(--ather-bockground-color);
+}
+
+/* grid systeam  */
+.perant {
+    grid-template-columns: auto 1fr;
+
+}
+
+.gree {
+    color: var(--ather-text-color);
+}
+.gree-background{
+    background-color: var(--ather-text-color);
+    transition: var(--main-trantion);
+}
+.gree-background:hover{
+    background-color: #6e747b;
+}
+/* ===================================aside===================================== */
+
+aside {
+    position: sticky;
+    top: 0;
+    width: 286px;
+    max-width: 300px;
+    padding: 10px 20px;
+    height: 100vh;
+    grid-template-rows: 10% 1fr 10%;
+    overflow: hidden;
+}
+
+aside .logo img {
+    width: 50px;
+}
+
+aside .logo span {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+aside .logo span b {
+    font-size: 1.3em;
+    color: var(--bleu-color);
+}
+
+aside a span,
+aside a i {
+    color: var(--ather-text-color);
+
+}
+
+aside a span {
+    font-size: 0.8em;
+}
+
+aside a i,
+aside .logo img {
+    margin-right: 20px;
+}
+
+aside .menu {
+    gap: 0.8rem;
+}
+
+aside a {
+    padding: 10px 20px;
+    transition: var(--main-trantion);
+}
+
+aside a.active {
+    background-color: #45bbff2f;
+    border-left: 4px solid var(--text-color);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+aside a.active span,
+aside a.active i {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+aside a:hover:not(a.active) {
+    margin-left: 15px;
+}
+
+/* ===================================aside===================================== */
+/* ====================================start===body-Home======================= */
+
+.body-Home {
+    grid-template-rows: 60px 1fr;
+}
+
+nav {
+    padding: 10px 20px;
+}
+
+.image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+nav .admin {
+    font-size: 0.8em;
+    text-transform: capitalize;
+}
+
+nav .admin b {
+    font-size: 1.1em;
+}
+nav .date span{
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* ====================================start===body-Home======================= */
+
+
+/* ============================section======================================== */
+
+section a {
+    color: var(--text-color);
+}
+
+section {
+    padding: 20px;
+}
+
+
+.bodySection {
+    background-color: var(--white-color);
+    border-radius: var(--ather-border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+section .box {
+    padding: 20px;
+    gap: 10px;
+    transition: var(--main-trantion);
+}
+
+section .miniBox a {
+    width: calc(100% / 3.3);
+}
+
+section .box:hover {
+    margin-top: -6px;
+}
+
+section .box>span:first-child {
+    color: var(--main-color);
+}
+
+section .box>span,
+section .box b {
+    font-size: 0.8em;
+}
+
+section .box .user {
+    font-weight: 500;
+}
+
+section a .box svg {
+    width: 5rem;
+    height: 5rem;
+}
+
+section a .box svg circle {
+    fill: none;
+    stroke: var(--main-color);
+    stroke-width: 14px;
+    stroke-linecap: round;
+    transform: translate(3px, 3px);
+    stroke-dasharray: 200;
+    stroke-dashoffset: -40;
+}
+
+section a:nth-child(2) .box svg circle {
+    stroke-dasharray: 130;
+    stroke-dashoffset: -10;
+}
+
+section .box .total h5:last-child {
+    font-size: 1.5em;
+}
+
+.upBox .subBox {
+    height: 60px;
+    grid-template-columns: 7% 17% 17% 1fr 7%;
+    margin-bottom: 15px;
+}
+
+.upBox .subBox span {
+    height: 100%;
+    border-right: 3px solid var(--ather-bockground-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.upBox .subBox span:last-child {
+    border: none;
+}
+
+.upBox .time {
+    background-color: #45bbff2f;
+    border-radius: var(--ather-border-radius) 0 0 var(--ather-border-radius);
+}
+
+.upBox .H-tow .time {
+    background-color: rgba(255, 152, 152, 0.523);
+}
+
+.upBox .time.e-time {
+    border-radius: 0 var(--ather-border-radius) var(--ather-border-radius) 0;
+}
+
+.subBox .name {
+    font-weight: 500;
+}
+
+
+table{
+    line-height: 2.5;
+}
+table thead{
+    background-color: #45bbff2f;
+
+}
+table tbody{
+    font-size: 0.9em;
+}
+
+table  tr{
+    border-bottom: 3px solid var(--ather-bockground-color);
+}
+table tbody  tr:last-child{
+    border-bottom-color:transparent ;
+}
+table{
+    border: none;
+}
+
+
+/* ===============================section================================== */

@@ -1,0 +1,351 @@
+.upBox .subBox {
+    grid-template-columns: 7% 1fr;
+    margin-bottom: 30px;
+}
+
+.upBox .subBox i {
+    font-size: 1.2em;
+}
+
+.upBox .subBox input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0 var(--ather-border-radius) var(--ather-border-radius) 0;
+    outline: none;
+    padding-left: 20px;
+    font-size: 1.1em;
+}
+
+.dropdown ul {
+    box-shadow: var(--box-shadow);
+}
+
+.dropdown ul li a {
+    color: var(--text-color);
+}
+
+.setData i {
+    transition: var(--main-trantion);
+}
+
+.setData i:hover {
+    color: var(--text-color);
+}
+
+.btn-create-user {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    font-size: 2em;
+}
+
+.btn-create-user a i {
+    color: var(--main-color);
+    transition: var(--main-trantion);
+}
+
+.btn-create-user:hover a i {
+    color: var(--text-color);
+}
+
+/* ====================create-user=============================== */
+
+.create {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: #3375e83e;
+    top: 0;
+    left: 0 ;
+    transition: var(--main-trantion);
+}
+.create-user,
+.show-user{
+    display: none;
+}
+.create-user.active,
+.show-user.active{
+    display: flex;
+    animation:entroAnimatin 0.8s ease-in-out ;
+}
+@keyframes entroAnimatin {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+form .upload-imag,
+form .upload-imag2{
+    background-color: transparent;
+}
+.create .box-create{
+    width: 60%;
+    height: 90vh;
+    background-color: var(--white-color);
+    border-radius: var(--ather-border-radius);
+    box-shadow: var(--box-shadow) ,  rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(142, 187, 255) 0px 0px 0px 1px inset;
+    padding: 20px;
+    position: relative;
+    transition: var(--main-trantion);
+}
+.create-user.active .box-create-user,
+.show-user.active .box-create{
+    animation:anmationBox-create 1s ease-in-out ;
+
+}
+@keyframes anmationBox-create {
+    0%{
+        left: -100px;
+    }
+    100%{
+        left: 0;
+    }
+}
+
+form{
+    height: 85vh;
+    overflow: hidden;
+    background-color: var(--white-color);
+}
+.create .box-create .close{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    top: -16px;
+    right: 20px;
+    box-shadow: var(--sub-box-shadow);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.create .sub-box-create .upload-imag .imag-show,
+.create .sub-box-create .upload-imag2 .imag-show{
+     position: relative;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+} 
+.create .sub-box-create .upload-imag img,
+.create .sub-box-create .upload-imag2 img{
+    position: relative;
+    z-index: 123;
+    width: 100%;
+    height: 100%;
+}  
+form  .span-raedy span:not(.imag-show) {
+    position: absolute;
+    left: 0;
+    transform: translate(23% , 90%);
+    color: var(--sconde-color);
+    font-size: 0.8em;
+    opacity: 0.7;
+    transition:var(--main-trantion);
+}
+form label input,
+form label textarea{
+    background-color: var(--ather-bockground-color);
+    
+}
+form label textarea.fild {
+    width: 90%;
+    height: auto;
+}
+ .nextButton .next{
+    cursor: pointer;
+}
+
+.TypeUser label span{
+    width: 180px;
+    height: 220px;
+    background-color: var(--ather-bockground-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: var( --title-box-shadow) , rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;;
+}
+.TypeUser label input[type='radio']:checked ~ span{
+    box-shadow: var( --borde-box-shadow);
+}
+.TypeUser label img{
+    width: 90%;
+}
+.TypeUser label b{
+    font-size: 1.3em;
+}
+.TypeUser,
+.info-user,
+.fatherMather,
+.info-child,
+.Diagnostic,
+.Medecins{
+    width: 100%;
+    height: 100%;
+    transition: var(--main-trantion);
+}
+.info-user,
+.TypeUser.noActive,
+.fatherMather,
+.info-child,
+.Diagnostic,
+.Medecins {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    transition: var(--main-trantion);
+}
+
+.info-user.active,
+.TypeUser,
+.fatherMather.active,
+.info-child.active,
+.Diagnostic.active,
+.Medecins.active{
+    opacity: 1;
+    visibility: visible ;
+    width: 100%;
+    height: 100%;
+    transition: var(--main-trantion);
+
+}
+.btn-button{
+    cursor: pointer;
+}
+form .title{
+    box-shadow: var( --title-box-shadow) ,  rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    border-radius: var(--ather-border-radius);
+    word-spacing: 4px;
+}
+form .upDiagnostic{
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.form-check{
+    display: flex;
+    padding: 15px;
+    background-color: var(--ather-bockground-color);
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+
+}
+.subDiagnostic-one {
+    border-right: 2px solid var(--ather-text-color);
+}
+.form-switch .form-check-input{
+    margin-left: 0;
+    margin-right: 10px;
+    
+}
+.form-switch .form-check-input{
+    background-color: var(  --main-color);
+}
+.form-switch .form-check-input:checked{
+    box-shadow: var(--borde-box-shadow) , var( --title-box-shadow);
+    border: none;
+}
+form .fatherMather label{
+    margin-bottom: 15px;
+}
+
+
+/* ====================create-user=============================== */
+
+/* ====================photo link haver============================== */
+table tbody tr td:first-child a {
+    position: relative;
+    overflow: hidden;
+}
+table tbody tr td:first-child a div{
+    position: absolute;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background-color: #45bbffbb;
+    font-size: 0.8em;
+    left: 0;
+    font-weight: 700;
+    transition: var(--main-trantion);
+    opacity: 0;
+    visibility: hidden;
+}
+table tbody tr{
+    animation: animationTr 0.6s ease-in-out;
+    opacity: 1;
+    position: relative;
+    left: 0;
+}
+table tbody tr:nth-of-type(even){
+    animation: animationTr 1s ease-in-out;
+ 
+}
+@keyframes animationTr {
+    0%{
+        opacity: 0;
+        position: relative;
+        left: -30px;
+    }
+    100%{
+        opacity: 1;
+        position: relative;
+        left: 0;
+    }
+}
+table tbody tr td:first-child a:hover div{
+    opacity: 1;
+    visibility: visible;
+}
+table tbody tr td:first-child a div span{
+    margin-bottom: -30px;
+    transition: var(--main-trantion);
+}
+table tbody tr td:first-child a:hover div span{
+    margin-bottom: 0;
+}
+/* ====================photo link haver============================== */
+
+form .allInformation{
+    width: 90%;
+}
+
+form .Medecins{
+    grid-template-rows: 15% 1fr 15%;
+    grid-template-columns: 1fr;
+}
+form .Medecins .form-select{
+     width:90%;
+     height: 90%;
+     box-shadow: var(--sub-box-shadow);
+     padding: 0;
+    border: none !important;
+}
+form .Medecins .form-select:focus{
+    box-shadow: var(--borde-box-shadow) !important;
+}
+form .Medecins .form-select .title-select{
+    text-align: center;
+    font-size: 1.2em;
+    background-color: #c4e9ff;
+    padding: 8px;
+    border-radius:0 0 var(--ather-border-radius) var(--ather-border-radius);
+    margin-bottom: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+    box-shadow: var(--box-shadow);
+    font-weight: 600;
+    color: var(--ather-text-color);
+}
+form  .Medecins .form-select option:not(:first-child){
+    padding:5px 20px;
+}
