@@ -4,7 +4,11 @@ let input_image = document.querySelector('.input-image');
 input_image.onchange = function () {
     image_uplode.src = URL.createObjectURL(input_image.files[0])
 }
-
+let image_uplode1 = document.querySelector(".image-uplode1");
+let input_image1 = document.querySelector('.input-image1');
+input_image1.onchange = function () {
+    image_uplode1.src = URL.createObjectURL(input_image1.files[0])
+}
 
 
 

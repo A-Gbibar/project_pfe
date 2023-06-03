@@ -125,6 +125,7 @@ form{
 .create .sub-box-create .upload-imag .imag-show,
 .create .sub-box-create .upload-imag2 .imag-show{
      position: relative;
+     z-index: 1;
         width: 130px;
         height: 130px;
         border-radius: 50%;
@@ -265,7 +266,7 @@ table tbody tr td:first-child a {
     position: relative;
     overflow: hidden;
 }
-table tbody tr td:first-child a div{
+table tbody tr td:first-child a div div{
     position: absolute;
     border-radius: 50%;
     width: 40px;
@@ -274,18 +275,25 @@ table tbody tr td:first-child a div{
     background-color: #45bbffbb;
     font-size: 0.8em;
     left: 0;
+    top: 0;
     font-weight: 700;
     transition: var(--main-trantion);
     opacity: 0;
     visibility: hidden;
 }
+table tbody tr td:first-child i {
+    font-size: 1.8em;
+    position: relative;
+    top: -13px;
+}
+
 table tbody tr{
     animation: animationTr 0.6s ease-in-out;
     opacity: 1;
     position: relative;
     left: 0;
 }
-table tbody tr:nth-of-type(even){
+table tbody tr:not(:nth-of-type(even)){
     animation: animationTr 1s ease-in-out;
  
 }
@@ -348,4 +356,15 @@ form .Medecins .form-select .title-select{
 }
 form  .Medecins .form-select option:not(:first-child){
     padding:5px 20px;
+}
+.radios label{
+    height: 100%;
+}
+
+form input[type='file']{
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 123;
 }

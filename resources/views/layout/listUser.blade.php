@@ -57,58 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- <tr>
-                            <td><a href="#" onclick="showUser();">
-                                    <div class="display-flex-center"><span>Show</span> </div>
-                                    <img src="../img/face2.jpg" alt="" class="image">
-                                </a></td>
-                            <td>1</td>
-                            <td>Adulte </td>
-                            <td>Auspicious Adulte</td>
-                            <td>F</td>
-                            <td>18</td>
-                            <td>+212 676571308</td>
-                            <td>Sidi Rahhal Chaouia 26652</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" onclick="showUser();">
-                                    <div class="display-flex-center"><span>Show</span> </div>
-                                    <img src="../img/face15.jpg" alt="" class="image">
-                                </a></td>
-                            <td>2</td>
-                            <td>Adulte</td>
-                            <td>Auspicious Adulte</td>
-                            <td>F</td>
-                            <td>18</td>
-                            <td>+212 676571308</td>
-                            <td>Sidi Rahhal Chaouia 26652</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" onclick="showUser();">
-                                    <div class="display-flex-center"><span>Show</span> </div>
-                                    <img src="../img/face8.jpg" alt="" class="image">
-                                </a></td>
-                            <td>2</td>
-                            <td>Adulte</td>
-                            <td>Auspicious</td>
-                            <td>F</td>
-                            <td>18</td>
-                            <td>+212 676571308</td>
-                            <td>Sidi Rahhal Chaouia 26652</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" onclick="showUser();">
-                                    <div class="display-flex-center"><span>Show</span> </div>
-                                    <img src="../img/face16.jpg" alt="" class="image">
-                                </a></td>
-                            <td>2</td>
-                            <td>famme</td>
-                            <td>Auspicious</td>
-                            <td>F</td>
-                            <td>18</td>
-                            <td>+212 676571308</td>
-                            <td>Sidi Rahhal Chaouia 26652</td>
-                        </tr> --}}
+
             </tbody>
         </table>
 
@@ -122,7 +71,7 @@
         <div class="create create-user display-flex-center  z-3">
             <div class="box-create position-relative box-create-user">
                 <span class="close display-flex-center" onclick="showCreateBox();"><i class="bi bi-x-lg"></i></span>
-                <form action="{{ route('List-clients.store') }}" class="overflow-hidden w-100" method="POST">
+                <form enctype="multipart/form-data" id="formAddUser"  class="overflow-hidden w-100">
                     @csrf
                     <!-- choze type user -->
                     <div class="TypeUser  display-flex-center flex-column">
@@ -150,8 +99,8 @@
                         <div class="title mt-3 ps-4 m-3  p-2 fw-bolder fs-5 text-center"> Informations
                             Adulte </div>
                         <label for="click" class="upload-imag mb-4 mt-3 display-flex-center w-100">
-                            <input type="file" Id='click'name='imageAdulte' accept="image/*"
-                                class="input-image d-none">
+                            <input type="file" Id='click' name='imageAdulte' value="aissa.png" accept="image/*"
+                                class="input-image">
                             <span class="imag-show display-flex-center">
                                 <img src="../img/user.png" alt="" class="image-uplode">
                             </span>
@@ -209,7 +158,7 @@
 
                     </div>
                     <!-- create info mather and father -->
-                    <div class="fatherMather">
+                    <div class="fatherMather overflow-x-scroll">
                         <div class="title mt-3 ps-4 m-3  p-2 fw-bolder fs-5 text-center"> Informations
                             Parent </div>
                         <div class="perant  display-flex-center">
@@ -267,10 +216,10 @@
                         <div class="title mt-2 ps-4 m-3  p-2 fw-bolder fs-5 text-center"> Informations
                             Enfant </div>
                         <label for="click" class="upload-imag mb-4 mt-3 display-flex-center w-100">
-                            <input type="file" Id='click' name="imagechild" accept="image/*"
-                                onchange="change();" class="input-image d-none">
+                            <input type="file" Id='click' name="imagechild" value="aissa.png" accept="image/*"
+                                onchange="change();" class="input-image1">
                             <span class="imag-show display-flex-center">
-                                <img src="../img/user.png" alt="" class="image-uplode">
+                                <img src="../img/user.png" alt="" class="image-uplode1">
                             </span>
                         </label>
                         <div class="fullName mt-3  w-100 d-flex justify-content-center align-items-center">
@@ -345,7 +294,8 @@
                         <div class="nextButton w-100 mt-3 mb-3 pe-4 display-flex-center justify-content-end">
                             <span class="btn-button next gree me-4 gree-background  text-white"
                                 onclick="nextMedecin();">Retour</span>
-                            <button class="btn-button next" type="submit">Create</button>
+                            <input type="submit" id="btn-create" class="btn-button" id="btn-submit" value="Create">
+                            {{-- <button class="btn-button next">Create</button> --}}
                         </div>
                     </div>
 
@@ -559,11 +509,20 @@
 
                     read.sort((s1, s2) => s2.idClient - s1.idClient);
                     $.each(read, function(key, value) {
-                        console.log(read[key].nom);
+                        let photo;
+                        if (read[key].photo !== null) {
+                            photo =
+                                `<img src="storage/${read[key].photo }" alt="non" class="w-100 h-100">`;
+                        } else {
+                            photo = `<i class="bi bi-person-fill w-100 h-100"></i>`;
+                        }
                         data += `<tr>
                             <td><a href="#" onclick="showUser();">
+                                <div class = 'image overflow-hidden position-relative'>
+                                    ${photo}
                                     <div class="display-flex-center"><span>Show</span> </div>
-                                    <img src="../img/face2.jpg" alt="" class="image">
+
+                                </div>
                                 </a></td>
                             <td>${read[key].idClient}</td>
                             <td>${read[key].type} </td>
@@ -584,5 +543,28 @@
             })
         }
         readData();
+        function claerData(){
+            var form = $("#formAddUser")[0].reset();
+        }
+        //save data in ajax
+        $(document).ready(function(){
+            $("#formAddUser").submit(function(event){
+                event.preventDefault();
+                var form = $("#formAddUser")[0];
+                var data = new FormData(form);
+                $.ajax({
+                    type:"POST",
+                    url:"{{ route('List-clients.store') }}",
+                    data:data,
+                    processData:false,
+                    contentType:false,
+                    success:function(data){
+                        document.querySelector('.create-user').classList.remove('active');
+                        readData();
+                        claerData();
+                    },
+                })
+            })
+        })
     </script>
 @endsection

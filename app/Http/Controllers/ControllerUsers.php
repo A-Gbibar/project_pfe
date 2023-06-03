@@ -10,19 +10,21 @@ use Ramsey\Uuid\Type\Integer;
 
 class ControllerUsers extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('layout.listUser');
     }
     //create new User
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $typeClinent = $request->typeClient;
         $Medecin = " ";
-        foreach($request->MedecinChild as $key=>$index){
-         $Medecin   .= $request->MedecinChild[$key] . " - " ;
+        foreach ($request->MedecinChild as $key => $index) {
+            $Medecin   .= $request->MedecinChild[$key] . " - ";
         }
         $Diagnostique = " ";
-        foreach($request->Diagnostic as $key=>$index){
-            $Diagnostique  .= $request->Diagnostic[$key] . " - " ; 
+        foreach ($request->Diagnostic as $key => $index) {
+            $Diagnostique  .= $request->Diagnostic[$key] . " - ";
         }
         $Enfant = new Enfant;
         $parentEnfant = new parentEnfant;
@@ -30,17 +32,17 @@ class ControllerUsers extends Controller
         //create Id in Users
         $idEnfant = Enfant::query()->get('idClient')->last();
         $idAdulte = adulte::query()->get('idClient')->last();
-        if(isset($idAdulte) || isset($idEnfant)  ){
+        if (isset($idAdulte) || isset($idEnfant)) {
             $idAdulte = isset($idAdulte->idClient) ? $idAdulte->idClient : 0;
             $idAdulte += 1;
-            $idEnfant =isset($idEnfant->idClient) ? $idEnfant->idClient : 0 ;
-            $idEnfant +=1;
-        }else{
+            $idEnfant = isset($idEnfant->idClient) ? $idEnfant->idClient : 0;
+            $idEnfant += 1;
+        } else {
             $idAdulte = 1;
         }
-        $idUnique = ($idAdulte > $idEnfant ) ? $idAdulte : $idEnfant; 
-      
-        if( $typeClinent === "Enafant" ){
+        $idUnique = ($idAdulte > $idEnfant) ? $idAdulte : $idEnfant;
+
+        if ($typeClinent === "Enafant") {
             $parentEnfant->typeParent = $request->typeParent;
             $parentEnfant->nomParent = $request->nomParent;
             $parentEnfant->PrenomParent = $request->PrenomParent;
@@ -48,10 +50,13 @@ class ControllerUsers extends Controller
             $parentEnfant->telParent = $request->TelParent;
             $parentEnfant->Address = $request->AddressParent;
             $parentEnfant->save();
-            // $file = $request->file('imagechild');
-            // $fileName = time() . '' . $file->getClientOriginalName();
-            // $filePath = $file->storeAs('imagesEnafant' , $fileName , 'public');
-            $Enfant->idClient = $idUnique ;
+            if (isset($request->imagechild)) {
+                $file = $request->file('imagechild');
+                $fileName = time() . '' . $file->getClientOriginalName();
+                $filePath = $file->storeAs('images' , $fileName , 'public');
+                $Enfant->photo = $filePath;
+            }
+            $Enfant->idClient = $idUnique;
             $Enfant->idParent = $parentEnfant->id;
             $Enfant->type     = 'Enfant';
             $Enfant->nom =  $request->nomChild;
@@ -61,44 +66,45 @@ class ControllerUsers extends Controller
             $Enfant->tel =  $request->Telchild;
             $Enfant->Medecin = $Medecin;
             $Enfant->Diagnostique = $Diagnostique;
-            // $Enfant->photo = $filePath;
             $Enfant->save();
-            dd($parentEnfant);
+            return response()->json($Enfant);
 
-        }else if($typeClinent === "Adulte"){
+        } else if ($typeClinent === "Adulte") {
             $adulte->idClient = $idUnique;
             $adulte->type     = 'Adulte';
             $adulte->nom = $request->nomAdulte;
             $adulte->Prenom = $request->PrenomAdulte;
-            $adulte->Sexe	 = $request->sexe;
+            $adulte->Sexe     = $request->sexe;
             $adulte->DateNaissance = $request->dateAdulte;
             $adulte->tel = $request->telAdulte;
             $adulte->Address = $request->AddressAdulte;
             $adulte->Diagnostique = $Diagnostique;
             $adulte->Medecin = $Medecin;
-            if($request->file('imageAdulte') != null ){
+            if (isset($request->imageAdulte)) {
                 $file = $request->file('imageAdulte');
                 $fileName = time() . '' . $file->getClientOriginalName();
-                $filePath = $file->storeAs('imagesAdult' , $fileName , 'public');
+                $filePath = $file->storeAs('images', $fileName, 'public');
                 $adulte->photo = $filePath;
             }
             $adulte->save();
-            dd($request);
-        }else{
+            return response()->json($adulte);
+
+        } else {
             return redirect()->route('List-clients.index');
         }
     }
 
-    public function readData(){
+    public function readData()
+    {
         $readDataAdulte = adulte::all();
-        $readDataEnfant= Enfant::query()
-        ->join('parentenfants' , 'enfants.idParent' , '=' , 'parentenfants.id')
-        ->get();
+        $readDataEnfant = Enfant::query()
+            ->join('parentenfants', 'enfants.idParent', '=', 'parentenfants.id')
+            ->get();
         $readData = [
             'adulte' => $readDataAdulte,
             'Enfant' => $readDataEnfant
         ];
-        
+
         return response()->json($readData);
     }
 }
