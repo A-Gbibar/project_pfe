@@ -296,6 +296,6 @@ form .radios{
 .noParmiter:nth-child(even){
     background-color: var(   --ather-bockground-color);
 }
-.noParmiter span{
+/* .noParmiter span{
     width: 151px;
-}
+} */

@@ -54,7 +54,7 @@
 .create {
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     background-color: #3375e83e;
     top: 0;
     left: 0 ;
@@ -286,14 +286,29 @@ table tbody tr td:first-child i {
     position: relative;
     top: -13px;
 }
-
-table tbody tr{
+table tbody .searchData{
+    animation: animationSearch 0.5s ease-in-out;
+    position: relative;
+    opacity: 1;
+}
+table tbody .searchData:not(:nth-of-type(even)){
+    animation: animationSearch 0.9s ease-in-out;
+}
+@keyframes animationSearch {
+    0%{
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+table tbody .dataUsers{
     animation: animationTr 0.6s ease-in-out;
     opacity: 1;
     position: relative;
     left: 0;
 }
-table tbody tr:not(:nth-of-type(even)){
+table tbody .dataUsers:not(:nth-of-type(even)){
     animation: animationTr 1s ease-in-out;
  
 }
@@ -367,4 +382,18 @@ form input[type='file']{
     width: 100%;
     position: absolute;
     z-index: 123;
+}
+.textAndInput{
+    display: grid ;
+    grid-template-columns: 30% 1fr ;
+}
+
+table .not-found td img{
+    width: 100px;
+}
+table .not-found td div{
+    text-align: center;
+    width: 100%;
+    font-size: 1.3em;
+    text-transform: capitalize;
 }

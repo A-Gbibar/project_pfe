@@ -27,3 +27,7 @@ Route::post('/List-clients' , [ControllerUsers::class , 'store'])->name('List-cl
 
 Route::get('/list-clients/read' , [ControllerUsers::class , 'readData'])->name('list-client.read');
 
+Route::get('/list-clients/{id}' , [ControllerUsers::class , 'show'])->name('list-clients.show');
+
+Route::get('/List-clinets/search' , [ControllerUsers::class , 'search'])->name('List-clinets.search');
+
