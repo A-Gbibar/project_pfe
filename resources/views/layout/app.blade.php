@@ -74,7 +74,7 @@
 
         <div class="body-Home d-grid">
             <nav class="display-flex-spece-between ">
-                <h5 class="me-3">Home</h5>
+                <h5 class="me-3">@yield('TitleHead')</h5>
                 <div class="date">
                     <span>05</span>
                     <span>/</span>

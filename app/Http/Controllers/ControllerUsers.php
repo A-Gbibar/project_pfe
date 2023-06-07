@@ -94,6 +94,9 @@ class ControllerUsers extends Controller
     // read Data In Enfant And Adult
     public function readData()
     {
+        $page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
+        $limit = 10;
+        $start = ($page - 1 )*$limit;
         $readDataAdulte = adulte::all();
         $readDataEnfant = Enfant::query()
             ->join('parentenfants', 'enfants.idParent', '=', 'parentenfants.id')
@@ -102,7 +105,7 @@ class ControllerUsers extends Controller
             'adulte' => $readDataAdulte,
             'Enfant' => $readDataEnfant
         ];
-
+        
         return response()->json($readData);
     }
     // Show One User in Use IdCLient

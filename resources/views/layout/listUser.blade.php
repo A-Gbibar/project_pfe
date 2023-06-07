@@ -6,8 +6,12 @@
     <link rel="stylesheet" href="../css/ListClient.css">
 @endsection
 @section('clients')
-    active
+active
 @endsection
+@section('TitleHead')
+ Liste de clients
+@endsection
+
 @section('container')
     <section>
 
@@ -48,7 +52,7 @@
             <thead>
                 <tr class="p-2">
                     <th><i class="bi bi-image-fill"></i></th>
-                    <th >Id</th>
+                    <th>Id</th>
                     <th>Type</th>
                     <th>nom et prénom</th>
                     <th>Sexe</th>
@@ -61,6 +65,10 @@
 
             </tbody>
         </table>
+        <div class="pageList">
+            {{-- add page list --}}
+            <input type="hidden" name="currentpage" id="currentpage" value="1">
+        </div>
 
 
         <div class="btn-create-user" onclick="showCreateBox();">
@@ -368,6 +376,15 @@
             </div>
         </div>
 
+        {{-- alert add Good --}}
+        <div class="d-flex justify-content-center flex-column overflow-hidden  align-items-center UserAdd goodAdd">
+
+        </div>
+        {{-- alert error  --}}
+        <div class="d-flex  justify-content-center flex-column overflow-hidden  align-items-center UserAdd errorAdd">
+
+        </div>
+
         <div class="create display-flex-center show-user  z-3">
 
         </div>
@@ -378,7 +395,19 @@
 
 @section('linkJS')
     <script>
-        function readData() {
+       
+        //click add new page table
+        $(document).on("click" , "ul.Pagination li a" , function(e){
+            e.preventDefault();
+            const page = $(this).data("page");
+            $("#currentpage").val(page);
+            readData();
+            $(this).parent().siblings().removeClass("active");
+            $(this).parent().addClass("active");
+        });
+
+        function readData(numberPage) {
+            var page = $("#currentpage").val();
             $.ajax({
                 type: "GET",
                 dataType: 'json',
@@ -386,9 +415,11 @@
                 success: function(readData) {
                     var data = '';
                     let adulte = readData.adulte;
-                    let Enfant = readData.Enfant;
+                    //count length
+                    let countUsers = adulte.length;
+                    let Enfant  = readData.Enfant;
+                     countUsers += adulte.length;
                     read = adulte.concat(Enfant);
-                
                     read.sort((s1, s2) => s2.idClient - s1.idClient);
                     $.each(read, function(key, value) {
                         let photo;
@@ -412,12 +443,14 @@
                             <td>${read[key].DateNaissance}</td>
                             <td>+212 ${read[key].tel}</td>
                             <td>${read[key].Address}</td>
-                        </tr>
-                    `;
+                        </tr>`;
+                
 
                     });
+                    let pageTotal = Math.ceil(parseInt(countUsers) / 10 );
+                    const currentpage = $('#currentpage').val();
+                    pagination(pageTotal, currentpage);
                     $('tbody').html(data);
-
                 },
 
             })
@@ -427,6 +460,7 @@
         function claerData() {
             var form = $("#formAddUser")[0].reset();
         }
+        
         //save data in ajax
         $(document).ready(function() {
             $("#formAddUser").submit(function(event) {
@@ -441,9 +475,14 @@
                     contentType: false,
                     success: function(data) {
                         document.querySelector('.create-user').classList.remove('active');
-                        readData();
                         claerData();
+                        let UseName = data.nom + " " + data.Prenom;
+                        alertUser(UseName , 'WA098765') ;
+                        readData(); 
                     },
+                    error:function(e){
+                        alertErorr("Cany back in form is error input plase check in (4s)");
+                    }
                 })
             })
         })

@@ -1,9 +1,11 @@
 
-@extends('layout.app');
+@extends('layout.app')
 
 @section('title') Home @endsection
 @section('Home') active @endsection
-
+@section('TitleHead')
+ Home
+@endsection
 @section('container')
             <section>
                 <div class="miniBox d-flex justify-content-around w-100 align-items-center">
