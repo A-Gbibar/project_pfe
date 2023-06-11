@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('type');
             $table->string('nom');
             $table->string('Prenom');
+            $table->string('CINE' , 11 )->unique();
             $table->enum('Sexe' , ['Femme' , 'Homme']);
             $table->date('DateNaissance');
             $table->string('tel' , 10);
             $table->string('Address');
-            $table->string('Diagnostique');
-            $table->string('Medecin');
+            $table->string('Medecin')->nullable();
+            $table->string('Diagnostique')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

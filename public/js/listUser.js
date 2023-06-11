@@ -93,14 +93,14 @@ function pagination(totalPage, currentpage) {
 
 // ====================================show Alert Add User ======================
 
-function alertUser(UserNmae, cine) {
-    document.querySelector(".goodAdd").classList.add('active');
+function alertUser(UserNmae, cine, message) {
+    document.querySelector(".goodAdd").classList.add("active");
     var alert = `
     <div class="box d-flex justify-content-center  align-items-center flex-column">
     <div class="icon"></div>
     <h5 class="UserName title">${UserNmae}</h5>
     <div class="CIN"><span class="gree">CINE : </span> <span>${cine}</span></div>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+    <p>${message}</p>
     <div class="stop d-flex w-100 ">
         <div></div>
         <div></div>
@@ -109,21 +109,20 @@ function alertUser(UserNmae, cine) {
         <div></div>
         <div></div>
     </div>
+    
 </div>
     `;
     $(".goodAdd").html(alert);
-    var i = 0;
-    setTimeout(()=>{
-        document.querySelector(".goodAdd").classList.remove('active');
-        document.querySelector(".goodAdd").classList.add('d-none');
-    } , 4000 );
+
+    setTimeout(() => {
+        document.querySelector(".goodAdd").classList.remove("active");
+    }, 4000);
 }
 
 function alertErorr(massge) {
-    document.querySelector(".errorAdd").classList.add('active');
+    document.querySelector(".errorAdd").classList.add("active");
     var alert = `
-
-    <div class="box d-flex mt-4 justify-content-center  align-items-center flex-column">
+    <div class="box position-relative d-flex mt-4 justify-content-center  align-items-center flex-column">
     <div class="icon Eroor"></div>
     <p>${massge}</p>
     <div class="stop d-flex w-100 ">
@@ -134,13 +133,42 @@ function alertErorr(massge) {
         <div></div>
         <div></div>
     </div>
+    <span class="close alterClose display-flex-center" onclick="closeError();"><i
+    class="bi bi-x-lg"></i></span>
 </div>
     `;
     $(".errorAdd").html(alert);
-    var i = 0;
-    setTimeout(()=>{
-        document.querySelector(".errorAdd").classList.remove('active');
-        document.querySelector(".errorAdd").classList.add('d-none');
-    } , 4000 );
 }
-
+function closeError() {
+    document.querySelector(".errorAdd").classList.remove("active");
+}
+function warning(message, NameButton, UserName , id=0) {
+    document.querySelector(".winrning").classList.add("active");
+    var alert = `
+    <div class="box position-relative d-flex mt-4 justify-content-center  align-items-center flex-column">
+            <div class="icon warning"></div>
+            <h5 class="UserName title">${UserName}</h5>
+            <p>${message}</p>
+            <div class="stop d-flex w-100 ">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <span class="close display-flex-center" onclick="closeWorning();"><i class="bi bi-x-lg"></i></span>
+            <div class="button w-100 text-end m-2">
+            <button type="button" class="gree-background btn-button me-2" onclick="closeWorning();">Close</button>`;
+    if (NameButton == "Update") {
+        alert += `
+        <button type="submit" class="btn-button" onclick="closeWorning();">${NameButton}</button></div></div>`;
+    }else{
+        alert += `
+        <button type="button" class="btn-button deletButton" data-id = "${id}" onclick="closeWorning();">${NameButton}</button></div></div>`;
+    }
+    $(".winrning").html(alert);
+}
+function closeWorning() {
+    document.querySelector(".winrning").classList.remove("active");
+}

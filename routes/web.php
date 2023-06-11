@@ -31,3 +31,10 @@ Route::get('/list-clients/{id}' , [ControllerUsers::class , 'show'])->name('list
 
 Route::get('/List-clinets/search' , [ControllerUsers::class , 'search'])->name('List-clinets.search');
 
+Route::post('/UpdateAdulte/{id}' , [ControllerUsers::class , 'updateAdulte'])->name('updateAdulte');
+
+// delet users
+
+Route::get('/deleUsers/{id}/{type}' , [ControllerUsers::class , 'destroy'])->name('destroy');
+
+

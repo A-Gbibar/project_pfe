@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="../css/ListClient.css">
 @endsection
 @section('clients')
-active
+    active
 @endsection
 @section('TitleHead')
- Liste de clients
+    Liste de clients
 @endsection
 
 @section('container')
@@ -80,7 +80,8 @@ active
         <div class="create create-user display-flex-center  z-3">
             <div class="box-create position-relative box-create-user">
                 <span class="close display-flex-center" onclick="showCreateBox();"><i class="bi bi-x-lg"></i></span>
-                <form enctype="multipart/form-data" id="formAddUser" class="overflow-hidden w-100">
+                <form enctype="multipart/form-data" id="formAddUser" action="{{ route('List-clients.store') }}"
+                    method="POST" class="overflow-hidden w-100">
                     @csrf
                     <!-- choze type user -->
                     <div class="TypeUser  display-flex-center flex-column">
@@ -124,7 +125,15 @@ active
                                 <span>Prenom</span>
                             </label>
                         </div>
-                        <div class="perant mt-3 display-flex-center">
+                        <div class="CINE mt-4  w-100 d-flex justify-content-center align-items-center">
+                            <label class="CINE w-50 span-raedy ms-4 me-3">
+                                <input type="text" name="CINEAdulte" class="fild w-100">
+                                <span>CINE</span>
+                            </label>
+                        </div>
+
+
+                        <div class="perant  display-flex-center">
                             <div class="radios mb-3 position-relative mt-4  d-grid ">
                                 <span class=" d-flex align-items-center justify-content-center">Sexe</span>
                                 <div class="chose d-flex justify-content-center lign-items-center">
@@ -195,6 +204,12 @@ active
                             <label class="UserName span-raedy me-4  ms-2">
                                 <input type="text" name="PrenomParent" class="fild w-100">
                                 <span>Prenom</span>
+                            </label>
+                        </div>
+                        <div class="CINE mt-3  w-100 d-flex justify-content-center align-items-center">
+                            <label class="UserName w-50 span-raedy ms-4 me-3">
+                                <input type="text" name="CINEParent" class="fild w-100">
+                                <span>CINE</span>
                             </label>
                         </div>
                         <div class="TellN mt-3  w-100 d-flex justify-content-center align-items-center">
@@ -381,11 +396,34 @@ active
 
         </div>
         {{-- alert error  --}}
-        <div class="d-flex  justify-content-center flex-column overflow-hidden  align-items-center UserAdd errorAdd">
+        <div class="d-flex  justify-content-center  flex-column overflow-hidden  align-items-center UserAdd errorAdd">
 
         </div>
 
+        {{-- ========================updateAdulte====================================== --}}
+
         <div class="create display-flex-center show-user  z-3">
+            <div class="box-create position-relative">
+                <span class="close display-flex-center" onclick="showUser();"><i class="bi bi-x-lg"></i></span>
+                <form id="update" class="overflow-hidden w-100" method="POST">
+                    @csrf
+                    <div class="info-users h-100 sub-box-create overflow-x-scroll">
+
+                    </div>
+
+                    {{-- alert winrning  --}}
+                    <div
+                        class="d-flex  justify-content-center  flex-column overflow-hidden  align-items-center UserAdd winrning">
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        </div>
+
+        </form>
+        </div>
 
         </div>
 
@@ -395,9 +433,8 @@ active
 
 @section('linkJS')
     <script>
-       
         //click add new page table
-        $(document).on("click" , "ul.Pagination li a" , function(e){
+        $(document).on("click", "ul.Pagination li a", function(e) {
             e.preventDefault();
             const page = $(this).data("page");
             $("#currentpage").val(page);
@@ -417,8 +454,8 @@ active
                     let adulte = readData.adulte;
                     //count length
                     let countUsers = adulte.length;
-                    let Enfant  = readData.Enfant;
-                     countUsers += adulte.length;
+                    let Enfant = readData.Enfant;
+                    countUsers += adulte.length;
                     read = adulte.concat(Enfant);
                     read.sort((s1, s2) => s2.idClient - s1.idClient);
                     $.each(read, function(key, value) {
@@ -444,14 +481,17 @@ active
                             <td>+212 ${read[key].tel}</td>
                             <td>${read[key].Address}</td>
                         </tr>`;
-                
+
 
                     });
-                    let pageTotal = Math.ceil(parseInt(countUsers) / 10 );
+                    let pageTotal = Math.ceil(parseInt(countUsers) / 10);
                     const currentpage = $('#currentpage').val();
                     pagination(pageTotal, currentpage);
                     $('tbody').html(data);
                 },
+                error: function(e) {
+
+                }
 
             })
         }
@@ -460,8 +500,8 @@ active
         function claerData() {
             var form = $("#formAddUser")[0].reset();
         }
-        
-        //save data in ajax
+
+        //============== save data in ajax ==========================
         $(document).ready(function() {
             $("#formAddUser").submit(function(event) {
                 event.preventDefault();
@@ -477,29 +517,29 @@ active
                         document.querySelector('.create-user').classList.remove('active');
                         claerData();
                         let UseName = data.nom + " " + data.Prenom;
-                        alertUser(UseName , 'WA098765') ;
-                        readData(); 
+                        alertUser(UseName, data.CINE, 'this user is create good');
+                        readData();
                     },
-                    error:function(e){
+                    error: function(e) {
+
                         alertErorr("Cany back in form is error input plase check in (4s)");
                     }
                 })
             })
         })
-
+        // ============== to show data user =========================
         function showData(id) {
-            console.log(id);
             $.ajax({
                 type: 'get',
                 dataType: "json",
                 url: "/list-clients/" + id,
                 success: function(data) {
                     var data = data.show;
-                    $('.show-user').html(data);
+                    $('.info-users').html(data);
                 }
             });
         }
-
+        // ================ search Data for Table users =============
         $(document).ready(function() {
             $("#search").on('keyup', function() {
                 var value = $(this).val();
@@ -563,5 +603,54 @@ active
                 })
             })
         })
+
+        // =============== update inforamtion in users ==============
+        $(document).ready(function() {
+            $("form#update").submit(function(event) {
+                event.preventDefault();
+                var form = $("form#update")[0];
+                var data = new FormData(form);
+                var id = $(".buttonUpdata").attr('id');
+                $.ajax({
+                    type: "POST",
+                    url: `UpdateAdulte/` + id,
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        alertUser(data.UserName, data.CINE, 'the user is update good');
+                    },
+                    error: function(e, request) {
+                        alertErorr("this not udadte data becouse : " + e.responseJSON.message);
+
+                    }
+                });
+            });
+        });
+
+        // ===================Delet Users==========================
+        $("#update").on("click" , ".deletButton" , function(){
+            var id = $(this).attr("data-id");
+            var cine = $('.deletUsers').attr('data-cine');
+            var userName = $('.deletUsers').attr('data-userName');
+            var type = $('.deletUsers').attr('data-type');
+            var obj = $(this);
+            $.ajax(
+                {
+                    type:"GET",
+                    url: `/deleUsers/${id}/${type}`,
+                    success:function(data){
+                        document.querySelector('.show-user').classList.remove('active');
+                        alertUser(userName, cine , 'the user is update good');
+                        $(obj).parent().parent().remove();
+                        console.log(data);
+                    },
+                    error:function(e){
+                        alertErorr("this not Delet User becouse : " + e.responseJSON.message);
+                    }
+                }
+            );
+        })
+
     </script>
 @endsection

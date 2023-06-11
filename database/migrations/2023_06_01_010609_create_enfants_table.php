@@ -21,8 +21,8 @@ return new class extends Migration
             $table->enum('Sexe' , ['Femme' , 'Homme']);
             $table->date('DateNaissance');
             $table->string('tel' , 10)->nullable();
-            $table->string('Diagnostique');
-            $table->string('Medecin');
+            $table->string('Diagnostique')->nullable();
+            $table->string('Medecin')->nullable();
             $table->string('photo')->nullable();
             $table->foreign('idParent')->references('id')->on('parentEnfants');
             $table->timestamps();

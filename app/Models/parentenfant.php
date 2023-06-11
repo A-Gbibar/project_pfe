@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class parentenfant extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'typeParent', 'nomParent', 'PrenomParent', 'CINE', 'DateNaissanceParent', 'telParent', 'Address'
+    ];
 }

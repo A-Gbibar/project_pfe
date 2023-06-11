@@ -299,3 +299,282 @@ form .radios{
 /* .noParmiter span{
     width: 151px;
 } */
+
+/* =================================add=====Error============================ */
+
+/* alert Add User and remove user */
+
+.UserAdd {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: rgba(51, 117, 232, 0.243);
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--main-trantion);
+}
+.UserAdd.active{
+    opacity: 1;
+    visibility: visible;
+}
+.errorAdd.active,
+.goodAdd.active,
+.winrning.active{
+    opacity: 1;
+    visibility: visible;
+    z-index: 10000;
+}
+
+.UserAdd .box {
+    background-color: var(--white-color);
+    padding: 20px;
+    padding-bottom: 7px;
+    border-radius: var(--ather-border-radius);
+    box-shadow: var(--box-shadow), var(--sub-box-shadow);
+}
+.UserAdd .box{
+    min-width: 440px;
+    max-width: 600px;
+}
+
+.UserAdd .icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background-color: var(--three-color);
+    border-radius: 50%;
+}
+
+.UserAdd .box>div {
+    margin-bottom: 10px;
+}
+
+.UserAdd .box .icon.Eroor {
+    background-color: rgba(255, 0, 0, 0.509);
+}
+
+.UserAdd .icon::after,
+.UserAdd .icon::before {
+    content: "";
+    width: 40%;
+    height: 6px;
+    background-color: var(--white-color);
+    position: absolute;
+    border-radius: var(--ather-border-radius) 0 0 var(--ather-border-radius);
+    top: 54.1%;
+    left: 16%;
+    transform: rotate(42deg);
+    box-shadow: var(--title-box-shadow);
+    animation: aniamtionYESafter 1s ease-in-out;
+}
+
+.UserAdd .icon::before {
+    border-radius: 0 var(--ather-border-radius) var(--ather-border-radius) 0;
+    width: 60%;
+    transform: rotate(-56deg);
+    left: 33%;
+    top: 44%;
+    animation: aniamtionYESafterbefore 1.3s ease-in-out;
+
+}
+
+.UserAdd .box .icon.Eroor::after ,
+.UserAdd .box .icon.Eroor::before {
+    width: 78%;
+    border-radius:   var(--ather-border-radius);
+   top: 47%;
+left: 11%;
+}
+.UserAdd .box .icon.Eroor::after,
+.UserAdd .box .icon.Eroor::before {
+    width: 78%;
+    border-radius: var(--ather-border-radius);
+    top: 47%;
+    left: 11%;
+    animation: aniamtionNoafter 1.3s ease-in-out;
+
+}
+
+.UserAdd .box .icon.Eroor::before {
+    transform: rotate(-44deg);
+    animation: animationNobefore 1.3s ease-in-out;
+
+}
+@keyframes aniamtionNoafter {
+    0%{
+        top: -47%;
+        left: -11%;
+    }
+    100%{
+        top: 47%;
+        left: 11%;
+    }
+}
+@keyframes  animationNobefore{
+    0%{
+    transform: rotate(44deg);
+    }
+    100%{
+    transform: rotate(-44deg);
+    }
+}
+
+@keyframes aniamtionYESafterbefore {
+    0% {
+        left: 115%;
+        top: -8%;
+        transform: rotate(-90deg);
+        background-color: var(--three-color);
+    }
+
+    100% {
+        top: 44%;
+        left: 33%;
+        transform: rotate(-56deg));
+
+    }
+}
+
+@keyframes aniamtionYESafter {
+    0% {
+        left: -52%;
+        transform: rotate(0);
+        background-color: var(--three-color);
+    }
+
+    100% {
+        left: 16%;
+        transform: rotate(42deg);
+
+    }
+}
+
+.UserAdd .box .UserName {
+    padding: 6px;
+    box-shadow: var(--title-box-shadow), rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    border-radius: var(--ather-border-radius);
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.UserAdd .box p {
+    font-size: 0.9em;
+}
+
+.UserAdd .box .stop {
+    height: 20px;
+    background-color: rgba(255, 0, 0, 0.032);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.UserAdd .box .stop div {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(51, 117, 232, 0.243);
+    position: absolute;
+}
+
+.UserAdd .box .stop div {
+    right: 100%;
+    animation: aniamtionStop 4s ease-in-out infinite;
+
+}
+
+.UserAdd .box .stop div:nth-child(2) {
+    animation-delay: 0.5s;
+
+}
+
+.UserAdd .box .stop div:nth-child(3) {
+    animation-delay: 1s;
+
+}
+
+.UserAdd .box .stop div:nth-child(4) {
+    animation-delay: 1.5s;
+
+}
+
+.UserAdd .box .stop div:nth-child(5) {
+    animation-delay: 2s;
+
+}
+
+.UserAdd .box .stop div:nth-child(6) {
+    animation-delay: 2.5s;
+
+}
+
+@keyframes aniamtionStop {
+    0% {
+        right: -5%;
+    }
+}
+
+.UserAdd .box .warning{
+    background-color: rgb(229 229 110 / 89%);
+}
+.UserAdd .box .warning::before{
+    content: "";
+    border-radius: var(--ather-border-radius);
+    width: 50%;
+    transform: rotate(89deg);
+    left: 24%;
+    top: 34%;
+    border: 0.1px solid rgba(0, 0, 0, 0.311);
+    animation:animationWarningBefore 1.3s ease-in-out ;
+}
+@keyframes animationWarningBefore{
+    0%{
+        transform: rotate(-89deg);
+        left: -24%;
+        top:-34%
+    }
+    100%{
+        transform: rotate(89deg);
+        left: 24%;
+        top:34%
+    }
+}
+.UserAdd .box .warning::after{
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: 72%;
+    left: 44%;
+    border: 0.1px solid rgba(0, 0, 0, 0.311);
+    animation:animationWarningAfter 1.3s ease-in-out ;
+
+}
+@keyframes animationWarningAfter{
+    0%{
+        top: -72%;
+    }
+    100%{
+        top: 72%;
+    }
+}
+        
+/* ==============================close=====X================== */
+
+ .close{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    top: -16px;
+    right: 20px;
+    box-shadow: var(--sub-box-shadow);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.alterClose i{
+    font-size: 2em;
+}

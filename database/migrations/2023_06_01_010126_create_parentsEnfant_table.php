@@ -16,6 +16,7 @@ return new class extends Migration
             $table->enum('typeParent' , ['Pere' , 'Mère']);
             $table->string('nomParent');
             $table->string('PrenomParent');
+            $table->string('CINE' , 11 )->unique();
             $table->date('DateNaissanceParent');
             $table->string('telParent' , 10);
             $table->string('Address');
