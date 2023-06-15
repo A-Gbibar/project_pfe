@@ -1,0 +1,136 @@
+.tbaleMedicen{
+    border-radius: var(--ather-border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+.tbaleMedicen .headerTable{
+    border-radius: var(--ather-border-radius) var(--ather-border-radius) 0 0 ;
+    font-weight: 700;
+
+}
+.tbaleMedicen .headerTable,
+.tbaleMedicen .bodyTable{
+    text-transform: capitalize;
+}
+.tbaleMedicen .headerTable li:first-child{
+    padding-left: 12px;
+}
+.tbaleMedicen ul {
+    grid-template-columns: 8% 5% 18% 6% 16% 17% 20% 10% ;
+    align-items: center;
+    justify-content: center;
+}
+.tbaleMedicen ul li{
+    text-align: center;
+}
+.accordion-button::after {
+    position: absolute;
+    right: 56px;
+}
+.accordion-button{
+    border-bottom: 3px solid var(--ather-bockground-color);
+}
+.tbaleMedicen .headerTable,
+.tbaleMedicen .bodyTable button{
+    height: 60px  !important;
+}
+.tbaleMedicen .bodyTable button{
+        padding: 0;
+}
+.tbaleMedicen .headerTable ul,
+.tbaleMedicen .bodyTable ul{
+    height: 100%;
+}
+.tbaleMedicen .headerTable ul li:not(:last-child),
+.tbaleMedicen .bodyTable ul li{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid var(--ather-bockground-color);
+}
+table thead th,
+table tbody td{
+    border-right: 3px solid var(--ather-bockground-color);
+    
+}
+table tbody td:first-child{
+    font-weight: 700;
+}
+table thead{
+    background-color: #33d6e86e;
+}
+table td{
+    position: relative;
+    overflow: hidden;
+}
+
+.bi-calendar-x-fill::before{
+    font-size: 1.1em;
+}
+table tbody td i{
+    color:var(--main-color);
+}
+.accordion-button:not(.collapsed){
+    background-color: #45bbff1f;
+    box-shadow: var(--sub-box-shadow);
+}
+
+
+.bodyTable ul li a,
+table tbody tr td a{
+    position: relative;
+    overflow: hidden;
+}
+.bodyTable ul li a{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bodyTable ul li a i{
+    font-size: 1.8em;
+    position: relative;
+    top: 3px;
+}
+.bodyTable ul li a  div,
+table tbody tr td a div{
+    position: absolute;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background-color: #45bbffbb;
+    font-size: 0.8em;
+    left: 0;
+    font-weight: 700;
+    transition: var(--main-trantion);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.bodyTable ul li a:hover div,
+table tbody tr td a:hover div{
+    opacity: 1;
+    visibility: visible;
+}
+
+.bodyTable ul li a div span,
+table tbody tr td a div span{
+    margin-bottom: -30px;
+    transition: var(--main-trantion);
+}
+.bodyTable ul li a:hover div span,
+table tbody tr td a:hover div span{
+    margin-bottom: 0;
+}
+.not-found img{
+    width: 80px;
+}
+.not-found td{
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+}

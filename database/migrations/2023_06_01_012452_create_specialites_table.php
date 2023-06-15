@@ -14,6 +14,16 @@ return new class extends Migration
         Schema::create('specialites', function (Blueprint $table) {
             $table->id();
             $table->string('Typespecialite');
+            $table->string('photoSpecialites');
+            $table->string('Description');
+            $table->string('problim');
+            $table->string('photo1');
+            $table->string('Desphoto1');
+            $table->string('photo2');
+            $table->string('Desphoto2');
+            $table->string('photo3');
+            $table->string('Desphoto3');
+            $table->string('LinkVideo');
             $table->timestamps();
         });
     }

@@ -13,13 +13,19 @@ return new class extends Migration
     {
         Schema::create('medecins', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idSpecialites');
+            $table->string('idMedecins')->unique();
+            // $table->unsignedBigInteger('idSpecialites');
             $table->string('nom');
             $table->string('prenom');
-            $table->string('tel' , 10);
+            $table->string('CINE')->unique();
             $table->string('ville');
+            $table->enum('Sexs' , ['H' , 'F']);
+            $table->date('DateNaissance');    
+            $table->string('tel' , 10);
             $table->string('Address');
-            $table->foreign('idSpecialites')->references('id')->on('specialites');
+            $table->string('Diagnostic');
+            $table->string('photo')->nullable();
+            // $table->foreign('idSpecialites')->references('id')->on('specialites');
             $table->timestamps();
         });
     }

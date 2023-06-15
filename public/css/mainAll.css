@@ -451,6 +451,9 @@ left: 11%;
     }
 }
 
+
+
+
 .UserAdd .box .UserName {
     padding: 6px;
     box-shadow: var(--title-box-shadow), rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
@@ -577,4 +580,11 @@ left: 11%;
 }
 .alterClose i{
     font-size: 2em;
+}
+nav {
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+    box-shadow: none !important;
+    height: auto !important;
+    line-height: normal !important;
 }

@@ -500,7 +500,6 @@
         function claerData() {
             var form = $("#formAddUser")[0].reset();
         }
-
         //============== save data in ajax ==========================
         $(document).ready(function() {
             $("#formAddUser").submit(function(event) {
@@ -522,7 +521,8 @@
                     },
                     error: function(e) {
 
-                        alertErorr("Cany back in form is error input plase check in (4s)");
+                        alertErorr("Cany back in form is error (" + e.responseJSON.message +
+                            ")");
                     }
                 })
             })
@@ -622,35 +622,31 @@
                     },
                     error: function(e, request) {
                         alertErorr("this not udadte data becouse : " + e.responseJSON.message);
-
                     }
                 });
             });
         });
 
         // ===================Delet Users==========================
-        $("#update").on("click" , ".deletButton" , function(){
+        $("#update").on("click", ".deletButton", function() {
             var id = $(this).attr("data-id");
             var cine = $('.deletUsers').attr('data-cine');
             var userName = $('.deletUsers').attr('data-userName');
             var type = $('.deletUsers').attr('data-type');
             var obj = $(this);
-            $.ajax(
-                {
-                    type:"GET",
-                    url: `/deleUsers/${id}/${type}`,
-                    success:function(data){
-                        document.querySelector('.show-user').classList.remove('active');
-                        alertUser(userName, cine , 'the user is update good');
-                        $(obj).parent().parent().remove();
-                        console.log(data);
-                    },
-                    error:function(e){
-                        alertErorr("this not Delet User becouse : " + e.responseJSON.message);
-                    }
+            $.ajax({
+                type: "GET",
+                url: `/deleUsers/${id}/${type}`,
+                success: function(data) {
+                    document.querySelector('.show-user').classList.remove('active');
+                    alertUser(userName, cine, 'the user is update good');
+                    $(obj).parent().parent().remove();
+                    console.log(data);
+                },
+                error: function(e) {
+                    alertErorr("this not Delet User becouse : " + e.responseJSON.message);
                 }
-            );
+            });
         })
-
     </script>
 @endsection

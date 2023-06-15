@@ -33,7 +33,7 @@
                     <i class="bi bi-house-door-fill"></i>
                     <span>Home</span>
                 </a>
-                <a href="#" class=@yield('horaire')>
+                <a href="{{route('horaire.index')}}" class=@yield('horaire')>
                     <i class="bi bi-calendar-check-fill"></i>
                     <span>horaire quotidien</span>
                 </a>
@@ -41,7 +41,7 @@
                     <i class="bi bi-people-fill"></i>
                     <span>Liste de clients</span>
                 </a>
-                <a href="#" class=@yield('medecins')>
+                <a href="{{route('List-Medecin.index')}}" class=@yield('medecins')>
                     <i class="bi bi-file-person-fill"></i>
                     <span>Liste des médecins</span>
                 </a>
@@ -74,7 +74,7 @@
 
         <div class="body-Home d-grid">
             <nav class="display-flex-spece-between ">
-                <h5 class="me-3">@yield('TitleHead')</h5>
+                <h5 class="me-3 text-capitalize">@yield('TitleHead')</h5>
                 <div class="date">
                     <span>05</span>
                     <span>/</span>
@@ -100,8 +100,8 @@
     </div>
 
 
-    <!-- scrip bootstrap -->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    {{-- <!-- scrip bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script> --}}
 
     <script src="../js/listUser.js" ></script>
 

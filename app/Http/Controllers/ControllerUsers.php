@@ -126,7 +126,7 @@ class ControllerUsers extends Controller
 
     public function showDiagnostique($typeDiagnostique){
 
-        $ExplodeDiagnostique =  explode('-' ,  $typeDiagnostique);
+        $ExplodeDiagnostique =  explode('-' ,   trim($typeDiagnostique , " " ));
         $textDiagnostique = ['Kinesitherapie'  , 'Psychomotricite' , 'Orthophonie' , 'Orthoptie' , 'Education_specialis' ,
                             'Formation_continue' , 'Psychologie' , 'Neuropsychologie']; 
         $DiagnostiqueHTML = '';
@@ -143,7 +143,7 @@ class ControllerUsers extends Controller
                 ' ;
                 for( $j = 0 ; $j < count($ExplodeDiagnostique) ;$j++  ){
                     for( $k = $j ; $k < $countTextDiagnostique ; $k++ ){
-                        if( trim($ExplodeDiagnostique[$j] , " ") == $textDiagnostique[$k] ){
+                        if($ExplodeDiagnostique[$j] == $textDiagnostique[$k] ){
                             for( $m = $k ; $m < $countTextDiagnostique ; $m++ ){
                                  $textDiagnostique[$m] = @$textDiagnostique[$m + 1 ];
                                 }

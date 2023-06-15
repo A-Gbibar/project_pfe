@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+
+}
+.btn-create-user{
+    position: relative !important;
+    right: 0;
+    bottom: 0;
+}
+.btn-create-user i{
+    color: var(--ather-text-color) !important;
+    transition: var( --main-trantion);
+}
+.btn-create-user:hover i{
+    color: var(--main-color) !important;
+}
+form{
+    height: auto;
+    background-color: var(--white-color);
+    border-radius: var(--ather-border-radius);
+    box-shadow: var( --box-shadow);
+    overflow: visible;
+}
+
+.navhoraires input[type="date"]{
+    border: none;
+    width: auto;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+.navhoraires .titleHoraires{
+    font-size: 1.1em;
+}
+.navhoraires .titleHoraires i{
+    position: relative;
+    top: 4px;
+    margin-right: 7px;
+}
+.modal.timepicker-modal{
+    height: auto;
+    border-radius: var(--ather-border-radius) !important;
+    z-index: 10333 !important;
+
+}
+.timepicker-digital-display{
+    background-color: var(--main-color);
+}
+.timepicker-canvas line{
+    stroke: var(--main-color);
+}
+.timepicker-canvas-bg,
+.timepicker-canvas-bearing{
+    fill: var(--main-color);
+}
+.modal-overlay{
+    min-height: 100vh !important;
+    background-color: #3375e83e !important; 
+    position: fixed;
+    bottom: 0;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important ;
+    opacity: 1 !important;
+}
+.suptime{
+    width: 40%;
+    height: 72px;
+    border-radius: var(--ather-border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+
+}
+.suptime input{
+    width: 100% !important;
+    height: 100% !important;
+    border-bottom: none !important;
+    font-size: 1.6em !important;
+}
+
+.suptime  .titleTime{
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translate(-88px, -10px);
+    background-color: var(--main-color);
+    color: var(--white-color);
+    padding: 5px 20px;
+    border-radius: var(--ather-border-radius);
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border: none !important;
+    box-shadow: none !important;
+}
+.searchUD   .listSearch{
+    width: 40%;
+}
+.searchUD .subBox{
+    grid-template-columns: 13% 1fr;
+}
+.searchUD .subBox:last-child span:first-child{ 
+    background-color: rgba(255, 152, 152, 0.523)
+}
+input[type=text]:not(.browser-default){
+    margin: 0 !important;
+}
+.searchUD   .subBox{
+    margin:  0;
+    border-radius: var(--ather-border-radius) var(--ather-border-radius) 0 0;
+}
+.searchUD  .subBox span{
+    border-radius: var(--ather-border-radius) 0 0 0;
+
+}
+.listUD{
+    width: 100%;
+    background-color: #45bbff2f;
+    border-radius: 0 0 var(--ather-border-radius) var(--ather-border-radius);
+
+    box-shadow: var(--box-shadow);
+    min-height: fit-content;
+    max-height: 250px;
+
+}
+.listUD ul{
+    padding: 10px;
+}
+.listUD li{
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: 20% 13% 1fr;
+    align-items: center;
+    height: 55px;
+    border-bottom: 2px solid var(--ather-bockground-color);
+    transition: var(--main-trantion);
+    cursor: pointer;
+}
+.listUser li{
+    grid-template-columns: 20% 13% 10% 1fr;
+
+}
+.listUD li:hover{
+    background-color:#45bbff2e ;
+}
+.listUD li:last-child{
+    border: none;
+}
+.listUD li span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    border-right: 2px solid var(--ather-bockground-color);
+    line-height: 2.5;
+}
+.listUD li span:last-child{
+    border: none;
+    justify-content: start;
+    padding-left: 10px;
+}
+
+.listUser.Noactive,
+.listDocter.Noactive{
+    display: none;
+}
+.AddressText{
+    width: 86%;
+}
+.AddressText textarea{
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    padding-top: 20px !important;
+}
+.AddressText span:last-child{
+    font-size: 1.1em !important;
+}
+form label textarea.fild{
+    height: 90px;
+}
+
+.addhoraires{
+    display: none; 
+}
+.screen{
+    position: relative;
+    left: 0;
+    animation:animtionAddHoriare 1s ease-in-out ;
+}
+
+@keyframes animtionAddHoriare {
+    0%{
+        left: -79px;
+    }
+    100%{
+        left: 0;
+    }
+}
+.addhoraires.active{
+    display: block;
+}
+
+@keyframes animtionAddHoriareSorti {
+    0%{
+        right:  -79px;
+    }
+    100%{
+        right: 0;
+    }
+}
+.Users i{
+    
+    font-size: 1.5em;
+
+}
