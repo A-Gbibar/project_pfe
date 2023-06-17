@@ -93,13 +93,14 @@ function pagination(totalPage, currentpage) {
 
 // ====================================show Alert Add User ======================
 
-function alertUser(UserNmae, cine, message) {
+function alertUser(UserNmae, cine, message , subTitle = "CINE") {
     document.querySelector(".goodAdd").classList.add("active");
+    let sub = (subTitle == "CINE" ) ? "CINE : " : "ID : ";
     var alert = `
     <div class="box d-flex justify-content-center  align-items-center flex-column">
     <div class="icon"></div>
     <h5 class="UserName title">${UserNmae}</h5>
-    <div class="CIN"><span class="gree">CINE : </span> <span>${cine}</span></div>
+    <div class="CIN"><span class="gree">${sub} </span> <span>${cine}</span></div>
     <p>${message}</p>
     <div class="stop d-flex w-100 ">
         <div></div>

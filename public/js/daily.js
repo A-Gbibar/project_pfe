@@ -1,3 +1,6 @@
+
+
+
 const timer = document.querySelectorAll(".timepicker");
 M.Timepicker.init(timer, {
     showClearBtn: true,
@@ -14,16 +17,10 @@ document.querySelector(".searchInput").onclick = function () {
 document.querySelector(".searchDocterInput").onclick = function () {
     document.querySelector(".listDocter").classList.remove("Noactive");
 };
+function UpdateInfo(){
+    document.querySelector('.UpdateInfo').classList.remove('active');
+}
 
-let Docter = document.querySelectorAll(".Docter");
-Docter.forEach(function (element, index) {
-    element.addEventListener("click", function () {
-        let searchDocter = document.querySelector(".searchDocterInput");
-        let userNameDoctre = document.querySelectorAll(".userNameDoctre");
-        searchDocter.value = userNameDoctre[index].innerText;
-        document.querySelector(".listDocter").classList.add("Noactive");
-    });
-});
 
 function showaddhoraires() {
     let addhoraires = document.querySelector(".addhoraires");

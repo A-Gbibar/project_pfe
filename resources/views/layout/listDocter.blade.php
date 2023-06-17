@@ -399,7 +399,6 @@
             var cine = $('.deletUsers').attr('data-cine');
             var userName = $('.deletUsers').attr('data-userName');
             var obj = $(`.item${id}`);
-            console.log(obj);
             $.ajax({
                 type: "GET",
                 url: `/List-Medecin/destroy/${id}`,

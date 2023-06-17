@@ -58,6 +58,17 @@ Route::post('/List-Medecin' , [ControllerMedecin::class , 'store'] )->name('List
 // ================================================Daily==========================================
 
 Route::get('/horaire' , [ControllerDaily::class , 'index'])->name('horaire.index');
+
 Route::get('/horaire/search-user' , [ControllerDaily::class , 'searchUser'])->name('horaire.search-user');
+
+Route::post('/horaire' , [ControllerDaily::class , 'store'])->name('horaire.store');
+
+Route::get('/horaire/show' , [ControllerDaily::class , 'show'])->name('horaire.show');
+
+Route::get('/horaire/saerch' , [ControllerDaily::class , 'saerch'])->name('horaire.saerch');
+
+Route::get('/horaire/single/{id}' , [ControllerDaily::class , 'single'])->name('horaire.single');
+
+Route::get('/horaire/destroy/{id}' , [ControllerDaily::class , 'destroy'])->name('horaire.destroy');
 
 
