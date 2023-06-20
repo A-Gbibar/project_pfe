@@ -1,0 +1,114 @@
+section{
+    min-height: 100vh;
+    width: 100%;
+}
+section .btn-button{
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+section .switch > div{
+    cursor: pointer;
+    background-color: var(--main-color);
+}
+
+section .switch > div:last-child{
+    background-color: var( --sconde-color);
+    transition: var( --main-trantion);
+}
+section .switch > div:hover{
+    background-color: #08a4ff;
+}
+section .switch > div:hover:last-child{
+    background-color: #3aebff;
+}
+
+section .switch.active > div:first-child{
+    background-color: var( --sconde-color);
+}
+section .switch.active > div:last-child{
+    background-color: var(--main-color);
+}
+section .switch > div:last-child{
+    margin-left:15px;
+
+}
+section .switch > div:first-child{
+    margin-right:15px;
+
+}
+
+.pearnt{
+    background-color: var(--white-color);
+    width:fit-content;
+    padding: 20px 30px;
+    border-radius: var(--ather-border-radius);
+    box-shadow: var(--title-box-shadow) , var(--sub-box-shadow) ;
+}
+form{
+    height: fit-content;
+    overflow: visible;
+}
+form a{
+    color: var(--main-color);
+}
+
+.inscrit{
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    right: -30px;
+    transition: var(--main-trantion);
+}
+.inscrit.active{
+    top: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+}
+.OneTime.active{
+    opacity: 1;
+    visibility: visible;
+    transition: var(--main-trantion);
+}
+.OneTime.noActive{
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--main-trantion);
+}
+.pearnt{
+    display: flex;
+    flex-direction: column;
+}
+
+.images{
+    width: 50%;
+}
+.images img{
+    width: 90%;
+}
+.imageSign.in{
+    top: 0;
+    left: -50px;
+    opacity: 0;
+    visibility: 0;
+    transition: var(--main-trantion);
+}
+.images.active .imageSign.in{
+    top: 0;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.images .imageSign.up {
+    position: relative;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: var(--main-trantion);
+}
+.images.active .imageSign.up{
+    right: -20px;
+    opacity: 0;
+    visibility: hidden;
+}

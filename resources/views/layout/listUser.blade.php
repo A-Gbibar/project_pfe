@@ -297,7 +297,7 @@
                         <div class="up-select display-flex-center w-100 h-100">
                             <select class="form-select" name="MedecinChild[]" multiple
                                 aria-label="multiple select example">
-                                <option aria-readonly="readonly" class="title-select">chose Medecin</option>
+                                <option aria-readonly="readonly" readOnly class="title-select">chose Medecin</option>
                                 <option value="Aissa">Aissa</option>
                                 <option value="Gbibar">Gbibar</option>
                                 <option value="Mohamade">Mohamade</option>
@@ -330,49 +330,49 @@
                             <div class="subDiagnostic-one  p-3">
 
                                 <div class="form-check form-switch ">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Kinesitherapie"
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" value="Kinesitherapie"
                                         type="checkbox" id="Kinesitherapie">
                                     <label class="form-check-label">Kinesitherapie</label>
                                 </div>
 
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Psychomotricite"
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" id ="diagnostic" value="Psychomotricite"
                                         type="checkbox" id="Psychomotricite">
                                     <label class="form-check-label" for="Psychomotricite">Psychomotricite</label>
                                 </div>
 
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Orthophonie"
+                                <div class="form-check form-switch ">
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" id ="diagnostic" value="Orthophonie"
                                         type="checkbox" id="Orthophonie">
                                     <label class="form-check-label" for="Orthophonie">Orthophonie</label>
                                 </div>
 
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Orthoptie"
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" id ="diagnostic" value="Orthoptie"
                                         type="checkbox" id="Orthoptie">
                                     <label class="form-check-label" for="Orthoptie">Orthoptie</label>
                                 </div>
                             </div>
                             <div class="subDiagnostic-tow  p-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Education_specialis"
+                                    <input class="form-check-input diagnostic1"  name="Diagnostic[]" id ="diagnostic" value="Education_specialis"
                                         type="checkbox" id="Education">
                                     <label class="form-check-label" for="Education">Education specialise</label>
                                 </div>
 
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Formation_continue"
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" id ="diagnostic" value="Formation_continue"
                                         type="checkbox" id="Formation">
                                     <label class="form-check-label" for="continue">Formation continue</label>
                                 </div>
 
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Psychologie"
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" id ="diagnostic" value="Psychologie"
                                         type="checkbox" id="Psychologie">
                                     <label class="form-check-label" for="Psychologie">Psychologie</label>
                                 </div>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="Diagnostic[]" value="Neuropsychologie"
+                                    <input class="form-check-input diagnostic1" name="Diagnostic[]" id ="diagnostic" value="Neuropsychologie"
                                         type="checkbox" id="Neuropsychologie">
                                     <label class="form-check-label" for="Neuropsychologie">Neuropsychologie</label>
                                 </div>
@@ -381,7 +381,7 @@
                         <div class="nextButton w-100 mt-4 mb-3 pe-4 display-flex-center justify-content-end">
                             <span class="btn-button next gree me-4 gree-background  text-white"
                                 onclick="RetourDiagnostic();">Retour</span>
-                            <span class="btn-button next" onclick="nextMedecin();">Next</span>
+                            <span  class="btn-button next" onclick="nextMedecin();" id = "nextDocter">Next</span>
                         </div>
                     </div>
 
@@ -433,6 +433,7 @@
 
 @section('linkJS')
     <script>
+
         //click add new page table
         $(document).on("click", "ul.Pagination li a", function(e) {
             e.preventDefault();
@@ -459,6 +460,7 @@
                     read = adulte.concat(Enfant);
                     read.sort((s1, s2) => s2.idClient - s1.idClient);
                     $.each(read, function(key, value) {
+               
                         let photo;
                         if (read[key].photo !== null) {
                             photo =
@@ -466,6 +468,10 @@
                         } else {
                             photo = `<i class="bi bi-person-fill w-100 h-100"></i>`;
                         }
+                        let age = read[key].DateNaissance.split('-');
+                        var d = new Date();
+                        var year = d.getFullYear();
+                        age = year - age[0];
                         data += `<tr class = "dataUsers">
                             <td onclick ="showData(${read[key].idClient});" ><a href="#" id = "showData" onclick="showUser();">
                                 <div class = 'image overflow-hidden position-relative'>
@@ -477,10 +483,11 @@
                             <td>${read[key].type} </td>
                             <td>${read[key].nom} ${read[key].Prenom}</td>
                             <td>${read[key].Sexe}</td>
-                            <td>${read[key].DateNaissance}</td>
+                            <td>${age}</td>
                             <td>+212 ${read[key].tel}</td>
                             <td>${read[key].Address}</td>
                         </tr>`;
+                       
 
 
                     });
@@ -496,7 +503,6 @@
             })
         }
         readData();
-
         function claerData() {
             var form = $("#formAddUser")[0].reset();
         }
@@ -568,6 +574,10 @@
                                     photo =
                                         `<i class="bi bi-person-fill w-100 h-100"></i>`;
                                 }
+                                let age = read[key].DateNaissance.split('-');
+                                var d = new Date();
+                                var year = d.getFullYear();
+                                age = year - age[0];
                                 data += `<tr class ="searchData">
                             <td onclick ="showData(${read[key].idClient});" ><a href="#" id = "showData" onclick="showUser();">
                                 <div class = 'image overflow-hidden position-relative'>
@@ -579,10 +589,11 @@
                             <td>${read[key].type} </td>
                             <td>${read[key].nom} ${read[key].Prenom}</td>
                             <td>${read[key].Sexe}</td>
-                            <td>${read[key].DateNaissance}</td>
+                            <td>${age}</td>
                             <td>+212 ${read[key].tel}</td>
                             <td>${read[key].Address}</td>
                         </tr>`;
+
 
                             });
                         } else {
@@ -619,6 +630,7 @@
                     contentType: false,
                     success: function(data) {
                         alertUser(data.UserName, data.CINE, 'the user is update good');
+                        readData();
                     },
                     error: function(e, request) {
                         alertErorr("this not udadte data becouse : " + e.responseJSON.message);
@@ -648,5 +660,21 @@
                 }
             });
         })
+
+        function Restart(id){
+            $.ajax({
+                type: "GET",
+                url: `/Restart/${id}`,
+                success: function(data) {
+                    document.querySelector(".winrning").classList.remove("active");
+                     showData(id);
+                    
+                },
+                error: function(e) {
+                    alertErorr("this not Restart User becouse : " + e.responseJSON.message);
+                }
+            });
+        }
+       
     </script>
 @endsection

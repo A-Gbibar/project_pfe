@@ -40,6 +40,17 @@ html {
     border-radius: var(--border-radius);
 }
 
+.gree {
+    color: var(--ather-text-color);
+}
+.gree-background{
+    background-color: var(--ather-text-color) !important;
+    transition: var(--main-trantion);
+}
+.gree-background:hover{
+    background-color: #6e747b;
+}
+
 body {
     background-color: var(--background-color);
 }

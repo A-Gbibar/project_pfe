@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('nom');
             $table->string('Prenom');
+            $table->string('UserName')->nullable();
             $table->string('CINE' , 11 )->unique();
             $table->enum('Sexe' , ['Femme' , 'Homme']);
             $table->date('DateNaissance');

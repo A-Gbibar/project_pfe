@@ -26,12 +26,15 @@ class ControllerDaily extends Controller
                 if( $request->type == 'user' ){
                     $infoAdulte = adulte::query()->where('nom' , 'LIKE' , '%'.$request->search.'%'  )
                     ->orWhere('Prenom' , 'LIKE' , '%'.$request->search.'%'  )
+                     ->orWhere('UserName' , 'LIKE' , '%'.$request->search.'%')
+
                     ->orWhere('idClient', 'LIKE' , '%'.$request->search.'%')
                     ->get();
                     $searchEnfant = Enfant::query()
                     ->join('parentenfants', 'enfants.idParent', '=', 'parentenfants.id')
                     ->where('nom' , 'LIKE' , '%'.$request->search.'%'  ) 
                     ->orWhere('Prenom' , 'LIKE' , '%'.$request->search.'%')
+                    ->orWhere('UserName' , 'LIKE' , '%'.$request->search.'%')
                     ->orWhere('idClient' , 'LIKE' , '%'.$request->search.'%')
                     ->get();
     
@@ -151,7 +154,7 @@ class ControllerDaily extends Controller
             <div class="subBoxDaily horaire H-one bodySection d-grid  position-relative align-items-center">
             <div class="AddDele position-absolute">
                 <a href="#" onclick="showData('.$element['id'].');" ><span>Modifier</span></a>
-                <a href="#"   onclick = "warning(`your are shor Delet Client` , `Delet` , `' . $element['UserNameUser'] . '` , `' . $element['id'] . '`);"><span>Supprimer</span></a>
+                <a href="#"   onclick = "warning(`vous êtes à court Supprimer` , `Delet` , `' . $element['UserNameUser'] . '` , `' . $element['id'] . '`);"><span>Supprimer</span></a>
                 <i class="bi bi-caret-down-fill"></i>
             </div>
                <span class="time s-time"> <b>'.$HourStart.'</b></span>

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enfant extends Model
+class comment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'idParent', 'nom', 'Prenom', 'UserName' , 'Sexe', 'DateNaissance', 'tel', 'Diagnostique', 'Medecin', 'photo'
+        'photo', 'UserName', 'commentaire', 'Evaluation'
     ];
 }

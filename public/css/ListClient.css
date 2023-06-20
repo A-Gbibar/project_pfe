@@ -430,3 +430,11 @@ table .not-found td div{
     color:var(--text-color);
 }
 
+.Login{
+    grid-template-columns: 30% 1fr 10%;
+}
+.Login span:last-child i{
+        font-size: 2em;
+        color: var(--end-color);
+        cursor: pointer;
+}

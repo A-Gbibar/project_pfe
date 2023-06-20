@@ -1,0 +1,98 @@
+
+
+nav {
+    position: sticky !important;
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 75px !important;
+    background-color: var( --white-color) !important;
+    box-shadow: var(--sub-box-shadow) !important;
+    z-index: 11111;
+}
+.logCenter img{
+    width: 50px;
+}
+
+.imageClient img{
+    width: 100%;
+}
+.imgae{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin-left: 20px;
+    box-shadow: var(--sub-box-shadow);
+}
+.imageClient span span:first-child{
+    font-size: 0.9em;
+}
+nav ul{
+    margin: 0;
+}
+nav ul li{
+    margin: 0 15px;
+    padding: 25px;
+    font-size: 1.2em;
+    height: 100%;
+    cursor: pointer;
+}
+li i{
+    color: var(--ather-text-color);
+}
+li.active i{
+   color: var(--text-color)
+}
+li.active {
+    height: 100%;
+    background-color: #45bbff2f;
+    border-bottom: 2px solid var(--text-color);
+    
+}
+/* ===================================boxInof=============================================== */
+.box-profile .photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--sub-box-shadow);
+}
+.box-profile {
+    background-color: var(--white-color);
+    padding: 30px;
+    box-shadow: var(--title-box-shadow);
+    border-radius: var( --ather-border-radius);
+    height: 80vh !important;
+    overflow-y: scroll;
+    width: 60%;
+}
+section{
+    height: 88vh;
+}
+.box-profile .subInfo{
+    grid-template-columns: 202px 1fr;
+}
+.createNewLogin{
+    top: 0;
+    left: 0;
+    padding: 30px;
+    width: 100%;
+}
+form{
+    height: auto;
+}
+.createNewLogin{
+    opacity: 0;
+    visibility: hidden;
+    right: -70px;
+    transition: var( --main-trantion);
+}
+.infoUsers.noActive{
+    display: none;
+}
+.createNewLogin.active{
+    opacity: 1;
+    visibility: visible;
+    right: 0; 
+}

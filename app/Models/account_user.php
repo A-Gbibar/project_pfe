@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enfant extends Model
+class account_user extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'idParent', 'nom', 'Prenom', 'UserName' , 'Sexe', 'DateNaissance', 'tel', 'Diagnostique', 'Medecin', 'photo'
+        'idClient', 'type', 'userName', 'email', 'password', 'Accept'
     ];
 }

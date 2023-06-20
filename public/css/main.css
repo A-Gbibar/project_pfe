@@ -1,0 +1,1059 @@
+/* -----------------------nav-------start----------------------- */
+nav {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height: 66px;
+    background-color: transparent ;
+    padding: 0 10px;
+    line-height: 1.9 !important;
+}
+
+
+nav.active {
+    background-color: var(--white-color) !important;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px !important;
+    
+}
+
+
+nav img {
+    width: 60px;
+}
+
+nav .container {
+    position: relative;
+    height: 100%;
+}
+
+nav .get_started {
+    width: 80%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+    height: 66px;
+    line-height: 66px;
+    padding: 0 10px;
+    text-transform: capitalize;
+    position: relative;
+    cursor: pointer;
+}
+
+nav ul li::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--three-color);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    transform-origin: right bottom;
+    transform: rotateX(90deg);
+    transition: transform 0.6s;
+}
+
+nav ul li:hover:before {
+    transform: rotateX(0);
+    transform-origin: right top;
+}
+
+nav ul li a {
+    color: var(--text-color);
+}
+
+.list {
+    font-size: 2.3em;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width:992px) {
+    nav .get_started {
+        align-items: center;
+        width: 300px;
+        position: absolute;
+        display: block;
+        right: 20px;
+        top: 0;
+        background-color: var(--main-color);
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--main-trantion);
+    }
+
+    nav .get_started.active {
+        opacity: 1;
+        visibility: visible;
+        top: 71px;
+    }
+
+    nav ul {
+        display: block;
+        position: relative;
+        z-index: 1000;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li::before {
+        border-radius: var(--border-radius);
+    }
+
+    nav .btn-button {
+        margin-top: 10px;
+        width: 100%;
+        background-color: var(--end-color);
+    }
+
+    nav ul li {
+        padding-left: 20px;
+        margin-bottom: 5px;
+    }
+
+    .list {
+        display: block;
+    }
+}
+
+/* -----------------------nav-------end----------------------- */
+
+/*--------------------------------- hom strat------------------------------ */
+.home {
+    flex-direction: column;
+}
+
+.identi {
+    min-height: 100vh;
+
+}
+
+.identi,
+.information .container .gid-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+
+}
+
+.identi img,
+.information .container .gid-info img {
+    width: 90%;
+}
+
+.identi .info {
+    align-items: start;
+    flex-direction: column;
+}
+
+.identi .info h1 {
+    font-size: 3.2em;
+    font-weight: 600;
+}
+
+.identi .info span {
+    font-size: 0.9em;
+    color: var(--sconde-color);
+}
+
+.identi .info .button>a span:first-child {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 49px;
+    background-color: var(--main-color);
+    transition: var(--main-trantion);
+}
+
+.identi .info .button>a span:last-child {
+    font-size: 1.1em;
+    color: var(--text-color);
+    text-transform: capitalize;
+    line-height: 1.5;
+}
+
+.identi .info a i {
+    color: var(--white-color);
+}
+
+.identi>a,
+.up {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    font-size: 2.2em;
+    animation: aimation-arrow 1s ease-in-out infinite alternate;
+}
+
+.identi>a i,
+.up i,
+.lorem i {
+    color: var(--main-color);
+    transition: var(--main-trantion);
+}
+
+.identi>a:hover i,
+.up:hover i,
+.lorem i:hover {
+    color: var(--text-color);
+}
+
+.identi .info .button>a span:first-child:hover {
+    background-color: var(--text-color);
+}
+
+@keyframes aimation-arrow {
+    100% {
+        bottom: 50px;
+    }
+}
+
+@media (max-width:992px) {
+
+    .identi,
+    .information .container .gid-info {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .identi img,
+    .information .container .gid-info img {
+        margin-top: 20px;
+        width: 60%;
+    }
+}
+
+@media (max-width:430px) {
+
+    .identi p,
+    .information .container .gid-info p {
+        font-size: 0.8em;
+    }
+
+    .identi .info h1 {
+        font-size: 2.6em;
+    }
+
+    .identi .info .button>a span:last-child {
+        font-size: 0.8em;
+    }
+
+    .identi {
+        padding: 20px;
+    }
+
+    .identi img {
+        width: 90%;
+    }
+
+    .identi .info {
+        margin-bottom: 30px;
+    }
+}
+
+
+/* _________________________________react_use_______________________________________*/
+
+.react_use {
+    width: 100%;
+    padding: 20px 0;
+    margin: 10px 20px;
+
+
+}
+
+.react_use .container {
+    padding: 0 20px;
+
+}
+
+.reacts {
+    box-shadow: var(--borde-box-shadow);
+    padding: 30px 10px;
+    border-radius: 10px
+}
+
+.react_use .reacts {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.react_use .react {
+    height: 140px;
+    text-align: center;
+    width: calc(100%/5);
+    margin: 0 20px;
+    box-shadow: var(--sub-box-shadow);
+    padding: 20px 10px;
+    border-radius: var(--border-radius);
+    line-height: 1.5;
+    margin: 10px;
+}
+
+.react_use .react span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--white-color);
+}
+
+.react_use .react i {
+    font-size: 1.3em;
+    color: var(--end-color);
+}
+
+.react_use .react span:nth-child(2) {
+    font-size: 1.5em;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.react_use .react span:nth-child(3) {
+    font-size: 0.8em;
+    color: var(--sconde-color);
+}
+
+@media (max-width:998px) {
+    .react_use .react {
+        width: calc(100% / 3);
+    }
+}
+
+@media (max-width:454px) {
+    .react_use .react {
+        width: 90%;
+    }
+}
+
+/* _________________________________react_use_______________________________________*/
+
+/* _________________________________information_______________________________________*/
+
+.information .info span:not(:last-child),
+.lorem .def span:not(:first-child) {
+    border-radius: var(--border-radius);
+    background-color: var(--three-color);
+    counter-increment: conte;
+    position: relative;
+}
+
+.information .info span:not(:last-child)::before,
+.lorem .def span:not(:first-child)::before {
+    content: counter(conte);
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 150%;
+    line-height: 30px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 1px 3px 2px inset;
+}
+
+.information .info span:last-child a i {
+    font-size: 1.2em;
+    color: var(--background-color);
+    margin: 5px;
+}
+
+.information .info span:last-child button {
+    padding-left: 20px;
+}
+
+@media (max-width:770px) {
+    .information .container {
+        padding: 0 20px;
+    }
+
+    .information .info span:not(:last-child) span {
+        margin-left: 30px;
+        font-size: 0.8em;
+    }
+}
+
+/* _________________________________information_______________________________________*/
+
+/* _________________________________video_______________________________________*/
+
+.video {
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.video iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius);
+}
+
+.video iframe {
+    box-shadow: var(--sub-box-shadow);
+}
+
+@media (max-width: 600px) {
+    .video {
+        padding: 0;
+    }
+}
+
+/* _________________________________video_______________________________________*/
+
+/* _________________________________up_______________________________________*/
+.up {
+    position: fixed;
+    left: auto;
+    right: -30px;
+    /* bottom: -30px; */
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--main-trantion);
+}
+
+.up.active {
+    opacity: 1;
+    visibility: visible;
+    right: 30px;
+}
+
+/* _________________________________up_______________________________________*/
+
+
+
+/*--------------------------------- hom end------------------------------ */
+
+/*--------------------------------- Services strat------------------------------ */
+
+.Services .tool {
+    display: grid;
+    padding: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.Services .tool>div:last-child {
+    grid-column: 1/4;
+}
+@media (min-width:1544px) {
+    .Services .tool>div:last-child{
+        grid-column:auto ;
+    }
+}
+
+@media (max-width:1040px) {
+    .Services .tool>div:last-child {
+        grid-column: 1/3;
+    }
+}
+
+@media (max-width:767px) {
+    .Services .tool>div:last-child {
+        grid-column: 1/1;
+    }
+}
+
+.Services .tool>div .icon,
+.perant .lorem .icon,
+.teams .team .image  {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 1px 3px 2px inset;
+}
+
+.Services .tool>div img,
+.perant .lorem img {
+    width: 100%;
+}
+
+.Services .tool>div h4,
+.perant .lorem h4,
+.teams .team h4 {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.Services .tool>div p {
+    font-size: 0.9em;
+}
+
+.Services .tool>div {
+    border-radius: var(--border-radius);
+    box-shadow: var(--sub-box-shadow);
+    padding: 20px;
+}
+
+/* __________________________sub_services________________________ */
+.sub_services .slide img {
+    height: 90vh;
+}
+
+.sub_services .slide {
+    width: 100%;
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: var(--border-radius);
+}
+
+.sub_services .slide .carousel-inner {
+    border-radius: var(--border-radius);
+    box-shadow: var(--sub-box-shadow);
+    position: relative;
+}
+
+.sub_services .slide .carousel-inner::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--background-color));
+    position: absolute;
+}
+
+.sub_services .slide i {
+    font-size: 2.5em;
+}
+
+.carousel-dark .carousel-indicators [data-bs-target] {
+    background-color: var(--text-color);
+}
+
+.sub_services .slide .carousel-caption {
+    position: absolute;
+    z-index: 1;
+}
+
+.sub_services .slide .carousel-caption h5 {
+    color: var(--text-color);
+}
+
+.sub_services .slide .carousel-caption p {
+    color: var(--sconde-color);
+}
+
+@media (max-width:770px) {
+    .sub_services .slide img {
+        height: auto;
+    }
+}
+
+/* __________________________sub_services________________________ */
+
+/* __________________________lorem_services________________________ */
+
+.perant {
+    height: 100vh;
+    background-color: #38ffde6a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20000;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--main-trantion);
+}
+
+.perant.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.perant .container {
+    height: 90%;
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    width: 100%;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: var(--title-box-shadow);
+    position: relative;
+}
+
+.lorem a {
+    font-size: 2em;
+    position: absolute;
+    top: -21px;
+    right: 20px;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background: var(--background-color);
+    z-index: 1000;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sub-box-shadow);
+}
+
+
+.lorem .def span:first-child {
+    font-size: 1.2em;
+    color: var(--sconde-color);
+}
+
+.lorem .def span i {
+    color: var(--sconde-color);
+    position: relative;
+    top: 4px;
+}
+
+.lorem .def span:not(:first-child) span,
+.lorem .def span:not(:first-child)::before {
+    color: var(--bleu-color);
+    font-size: 1em;
+}
+
+.lorem {
+    overflow: scroll;
+    padding: 20px;
+}
+.lorem .image{
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(250px , 1fr));
+    gap: 40px;
+}
+.lorem .image > div{
+ box-shadow: var(--sub-box-shadow);
+ border-radius: var(--border-radius);
+ cursor: pointer;
+ position: relative;
+ overflow: hidden;
+}
+.lorem .image > div::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(to bottom , transparent , var(--text-color)) ;
+    position: absolute;
+    left: 0;
+    border-radius: var(--border-radius);
+}
+.lorem .image > div img{
+    border-radius: var(--border-radius);
+    transition: var(--main-trantion);
+}
+.lorem .image > div .info{
+    position: absolute;
+    width: 100%;
+    font-size: 0.8em;
+    padding: 10px;
+    color: var(--three-color)  ;
+    z-index: 1111;
+}
+.lorem .image > div .info p{
+    color: var(--background-color);
+}
+.lorem .image > div::after, 
+.lorem .image > div .info{
+    bottom: -60px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--main-trantion);
+}
+.lorem .image > div:hover::after,
+.lorem .image > div:hover .info{
+    bottom: 0;
+    opacity: 1;
+    visibility: visible;
+}
+.lorem .image > div:hover img{
+
+    transform: scale(1.5) rotate(-20deg);
+}
+@media (max-width:991px) {
+    .lorem .image{
+        grid-template-columns:1fr ; 
+    }
+}
+@media (max-width:765px) {
+    .lorem .def span:not(:first-child)::before{
+        left: -6px;
+        top: 3%;
+    }
+    .lorem .def span:not(:first-child){
+        padding: 10px !important;
+    }
+}
+
+/* __________________________lorem_services________________________ */
+
+
+
+/*--------------------------------- Services end------------------------------ */
+
+
+/*--------------------------------- teams start------------------------------ */
+.teams .team {
+    max-height: 265vh;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+.teams .team::after{
+    content: "";
+    width: 6px;
+    height: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    
+}
+.teams .team .docs{
+    width: 50%;
+    position: relative;
+    counter-increment: doccount;
+}
+.teams .team.show.active,
+.comments .comment.show.active{
+    overflow: visible;
+    max-height: 100%;
+}
+.teams .team::before,
+.comments .comment::before{
+    content: "";
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    background:linear-gradient(to bottom , transparent , transparent  ,#45bbff38);
+    bottom: 0;
+    z-index: 1;
+    border-radius: var(--border-radius);
+    display: none;
+
+}
+.comments .comment::before{
+    height: 50%;
+    background:linear-gradient(to bottom , transparent , transparent  ,#45bbff65);
+}
+.teams .team.show::before,
+.comments .comment.show::before{
+    display: block;
+}   
+.teams .team.show.active::before{
+    height: 6%;
+}   
+.teams .team.show.active{
+    padding-bottom: 58px;
+}
+.teams .team.show.active::after{
+    height: 99%;
+}
+.teams .team .plus,
+.comments .comment .plusMore{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    background-color: var(--text-color);
+    box-shadow: var(--borde-box-shadow);
+    cursor: pointer;
+    display: none;
+}
+.teams .team.show .plus,
+.comments .comment.show .plusMore{
+    display: block;
+}
+/* .teams .team.show.active .plus{
+    display: none;
+} */
+
+.teams .team .plus:hover,
+.comments .comment .plusMore:hover{
+    background-color: var(--bleu-color);
+}
+
+.teams .team .docs .doc{
+    width: 80%;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sub-box-shadow);
+    margin: 20px;
+    position: relative;
+    background-color: var(--background-color);
+ 
+}
+.teams .team .docs::before{
+    content: counter(doccount);
+    position: absolute;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    background-color: var(--background-color);
+    border-radius: 50px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 1px 3px 2px inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: var(--main-color);
+}
+.teams .team .docs.doc-left::before{
+    right: -22px;
+}
+.teams .team .docs.doc-right::before{
+    left: -18px;
+}
+.teams .team .docs::after{
+    content: "";
+    width: 20%;
+    height: 6px;
+    background-color: var(--main-color);
+    position: absolute;
+    border-radius: var(--border-radius);
+    z-index: -1;
+}
+.teams .team .docs.doc-left::after{
+    right: 0;
+}
+.teams .team .docs.doc-right::after{
+    left: 0;
+}
+.teams .team .image{
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    padding-bottom:0 ;
+}
+.teams .team img{
+    width: 100%;
+}
+.teams .team .doc > span{
+    width: 100%;
+    margin: 6px;
+    font-size: 1.1em;
+    text-transform: capitalize;
+}
+.teams .team .doc > span span{
+    color: var(--sconde-color);
+}
+.teams .team .doc p{
+    font-size: 0.9em;
+}
+.teams .team .doc .socila i{
+    color: var(--main-color);
+    cursor: pointer;
+    transition: var(--main-trantion);
+}
+.teams .team .doc .socila i:hover{
+    color: var(--text-color);
+}
+.doc-left{
+    left: 0;
+}
+.doc-right{
+    left:50%;
+}
+@media (max-width:991px) {
+    .teams .team .docs{
+        position: static;
+        width: 100%;
+    }
+    .teams .team::after{
+        left: 10px;
+    }
+    .teams .team .docs.doc-left::before,
+    .teams .team .docs.doc-right::before{
+        left: -7px;
+    }
+    .teams .team .docs.doc-left::after{
+        left: 0;
+    }
+    .teams .team .docs .doc{
+        width: 100%;
+        margin-left: 53px;
+    }
+}
+@media (max-width:400px) {
+    .teams .team .doc > span{
+        font-size: 0.85em;
+    }
+    .teams .team .doc p{
+        font-size: 0.75em;
+    }
+    .teams .team.show .plus{
+        font-size: 0.8em;
+    }
+}
+/*----------------------------------teams-end------------------------------ */
+
+/*----------------------------------comment-end------------------------------ */
+
+
+.comments .container .comment{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3 , minmax(250px , 1fr));
+    gap: 30px;
+    padding: 0 15px;
+    max-height: 26rem;
+    overflow: hidden;
+}
+@media (max-width:991px) {
+    .comments .container .comment{
+        max-height: 41rem;
+    }
+}
+
+.comments .container h4{
+    color: var(--sconde-color);
+}
+.comments  .comment .user{
+    background-color: var(--background-color);
+    box-shadow: var(--sub-box-shadow);
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    height: fit-content;
+}
+.comments  .comment ul{
+    list-style: none;
+    padding-left: 0;
+}
+.comments  .comment ul li{
+    margin-bottom: 30px;
+}
+.comments  .comment .user .profile .image > span:nth-child(1){
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 1px 3px 2px inset;  
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+.comments  .comment .user   span{
+    font-size: 0.8em;
+    font-weight: 500;
+}
+.comments  .comment .user   span i , 
+.comments  .comment .user .profile > span:last-child{
+    color: var(--sconde-color);
+}
+.comments  .comment .user .profile .image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 4px;
+}
+.comments  .comment .user .profile .image > span:first-child   i{
+    font-size: 2.5em;
+}
+.comments  .comment .user .profile .image  span{
+    text-align: center;
+}
+.comments  .comment .user p{
+    width: 100%;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: var(--title-box-shadow);
+    font-size: 0.9em;
+    line-break: anywhere;
+}
+@media (max-width:1000px) {
+    .comments .container .comment{
+    grid-template-columns:repeat(2 , minmax(250px , 1fr)) ;
+    }
+    .comments  .comment ul:last-child{
+        grid-column: 1/3;
+    }
+}
+@media (max-width:768px){
+    .comments .container .comment{
+        grid-template-columns: 1fr;
+    }
+    .comments  .comment ul:last-child{
+        grid-column: 1/1;
+    }
+    .comments .container h4{
+        font-size: 1.2em;
+    }
+    .comments .comment ul li:last-child{
+        margin-bottom: 0;
+    }
+}
+
+
+/*----------------------------------comment-end------------------------------ */
+
+
+/*----------------------------------review-start------------------------------ */
+
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 30px;
+    margin-top: 7px;
+}
+form label:not(:nth-child(5)) span{
+    position: absolute;
+    left: 0;
+    transform: translate(23% , 90%);
+    color: var(--sconde-color);
+    font-size: 0.8em;
+    opacity: 0.7;
+    transition:var(--main-trantion);
+}
+.location .local iframe{
+    border-radius: var(--border-radius);
+    height: 70vh;
+    box-shadow: var(--borde-box-shadow) ;
+}
+/*----------------------------------review-end------------------------------ */
+
+
+    .input-image{
+        visibility: hidden;
+    }
+    .imag-show {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .upload-imag{
+        background-color: var(--white-color);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid var(--ather-bockground-color);
+        box-shadow: var( --sub-box-shadow);
+        overflow: hidden;
+    }
+    .upload-imag span{
+        position: relative !important;
+    }
+    .imag-show img{
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+
+    }
+/*----------------------------------footer-start------------------------------ */
+
+footer{
+    min-height: 50vh;
+    background-color: var(--sconde-color);
+}
+
+/*----------------------------------footer-end------------------------------ */
+
+
+
+

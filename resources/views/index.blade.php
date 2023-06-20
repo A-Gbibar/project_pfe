@@ -4,7 +4,7 @@
 @section('title') Home @endsection
 @section('Home') active @endsection
 @section('TitleHead')
- Home
+Accueil
 @endsection
 @section('container')
             <section>
@@ -59,26 +59,18 @@
                     </a>
                     <a href="#" class="bodySection">
                         <div class="box TotalUser d-flex flex-column">
-                            <span>last User</span>
+                            <span>Last Message User</span>
                             <div class="user ms-2 d-flex">
-                                <img src="../img/face16.jpg" class="image me-3" alt="">
+                                <img src="../img/face20.jpg" class="image me-3" alt="">
                                 <span class="d-flex  flex-column align-items-center">Aissa Gbibar <b
-                                        class="gree">209</b> </span>
+                                        class="gree">2010</b> </span>
                             </div>
                             <div class="total mt-2 d-flex justify-content-between align-items-center w-100">
-                                <div class="title text-center ">
-                                    <h6>Totla User</h6>
-                                    <h5 class="">340</h5>
+                                <div class="message">
+                                    La France est un pays situé en Europe occidentale. C'est un pays connu pour son histoire riche
                                 </div>
-                                <div class="donne position-relative display-flex-center">
-                                    <svg>
-                                        <circle cx="37" cy="37" r="33"></circle>
-                                    </svg>
-                                    <span class="position-absolute">81%</span>
-                                </div>
-
                             </div>
-                            <span class="gree">Last 12 Hours</span>
+                            <span class="gree">Last 2 Hours</span>
                         </div>
                     </a>
                 </div>

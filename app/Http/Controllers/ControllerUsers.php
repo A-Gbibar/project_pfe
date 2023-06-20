@@ -6,16 +6,73 @@ use Illuminate\Http\Request;
 use App\Models\adulte;
 use App\Models\Enfant;
 use App\Models\parentenfant;
+use App\Models\CreatLogin;
 use Ramsey\Uuid\Type\Integer;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ControllerUsers extends Controller
 {
-
 
     public function index()
     {
         return view('layout.listUser');
     }
+
+    //======================================= sorte Passworde =================================
+
+    public function sorteLogin($id , $UserName , $type){
+        $random_password = Str::random(10);
+        $check = CreatLogin::all();
+        if( isset($ckeck) ){
+            foreach($check as $key=>$element){
+                if( $element['login'] == $random_password ){
+                    $random_password = Str::random(10);
+                    continue;
+                }else{
+                    $random_password = Str::random(10);
+                    break;
+                }
+            }
+        } 
+        $idAdulte = null;
+        $idEnfant = null;
+        if($type === "Adulte"){
+            $idAdulte = $id;
+        }else if( $type == "Enfant" ){
+            $idEnfant = $id;
+        }
+        $data = [
+            'idAdulte'=>$idAdulte,
+            'idEnfant'=>$idEnfant,
+            'UserName'=>$UserName,
+            'login'=>$random_password,
+        ];
+        $create = CreatLogin::create($data);
+    }
+
+    public function Restart($id){
+        $random_password = Str::random(10);
+        $check = CreatLogin::all();
+        $idClient = CreatLogin::where("idAdulte" , $id)->first();
+        $idClient = ($idClient !== null) ? $idClient : CreatLogin::where("idEnfant" , $id)->first();
+        if( isset( $idClient) ){
+            foreach($check as $key=>$element){
+                if( $element['login'] == $random_password ){
+                    $random_password = Str::random(10);
+                    continue;
+                }else{
+                    $random_password = Str::random(10);
+                    break;
+                }
+            }
+            $update = $idClient->update([
+                'login' => $random_password
+            ]);
+            return response()->json($update);
+        } 
+    }
+
     //create new User
     public function store(Request $request)
     {
@@ -73,6 +130,8 @@ class ControllerUsers extends Controller
             $Enfant->type     = 'Enfant';
             $Enfant->nom =  $request->nomChild;
             $Enfant->Prenom =  $request->PrenomChild;
+            $Enfant->UserName = $request->nomChild . ' ' . $request->PrenomChild;
+            $this->sorteLogin($idUnique , $request->nomChild . ' ' . $request->PrenomChild , "Enfant" );
             $Enfant->Sexe =  $request->sexechild;
             $Enfant->DateNaissance =  $request->datechild;
             $Enfant->tel =  $request->Telchild;
@@ -85,6 +144,9 @@ class ControllerUsers extends Controller
             $adulte->type     = 'Adulte';
             $adulte->nom = $request->nomAdulte;
             $adulte->Prenom = $request->PrenomAdulte;
+            $adulte->UserName = $request->nomAdulte . ' ' . $request->PrenomAdulte;
+            $this->sorteLogin($idUnique , $request->nomAdulte . ' ' . $request->PrenomAdulte , "Adulte" );
+
             $adulte->CINE = $request->CINEAdulte;
             $adulte->Sexe     = $request->sexe;
             $adulte->DateNaissance = $request->dateAdulte;
@@ -174,6 +236,7 @@ class ControllerUsers extends Controller
         $html = "";
         if (isset($data)) {
             $image =  $data->photo;
+            $createLogin = CreatLogin::where("idAdulte" , $idShow)->first();
             if(!isset($image)){
                 $image = 'images/person-fill.svg';
             }
@@ -245,6 +308,22 @@ class ControllerUsers extends Controller
                                         '. $DiagnostiqueHTML .'
                                   
                                 </div>
+                                <div class="title mt-3 ps-4 m-3  p-2 fw-bolder fs-5 text-center">Connexion
+                                </div>
+
+                                <div class="UserName textAndInput noParmiter w-100  align-items-center">
+                                <span for="" class="me-4">Nom d\'utilisateur : </span>
+                                <input type="text"  readonly  value="' . $createLogin->UserName . '">
+                                
+                             </div>
+    
+    
+                         <div class="Login textAndInput noParmiter w-100  align-items-center" id="Login">
+                          <span for="" class="me-4">Login : </span>
+                          <input type="text" readonly value="' . $createLogin->login . '">
+                            <span onclick = "warning(`vous êtes abattu connexion Client` , `Restart` , `' . $data->nom . ' ' .  $data->Prenom . '` , `'.$data->idClient.'` );" ><i class="bi bi-arrow-clockwise"></i></span>
+                        </div>
+                     
 
                                 <div class="delete mb-1 mt-4 ">
                                     <a href="#" data-type = "'.$data->type.'" data-userName = "' . $data->nom . ' ' .  $data->Prenom . '"
@@ -253,11 +332,13 @@ class ControllerUsers extends Controller
                                         user ' . $data->nom . ' ' .  $data->Prenom . '</a>
                                 </div>
 
+                
+
                                 <div class="nextButton w-100 mt-4 mb-3 pe-4 display-flex-center justify-content-end">
                                     <span class="btn-button next gree me-4 gree-background  text-white"
                                         onclick="showUser();">Colse</span>
                                         <span class="buttonUpdata btn-button next" id="'.$data->idClient.'" 
-                                         onclick = "warning(`your are shor Update Client` , `Update` , `' . $data->nom . ' ' .  $data->Prenom . '`);"
+                                         onclick = "warning(`vous êtes abattu Mettre à jour le client` , `Update` , `' . $data->nom . ' ' .  $data->Prenom . '`);"
                                         >Update</span>
                                         <!--    <input type="submit"  class="buttonUpdata btn-button next" id="'.$data->idClient.'" value="Update">-->
 
@@ -280,6 +361,7 @@ class ControllerUsers extends Controller
         $DiagnostiqueHTML  =  $ControllerUsers->showDiagnostique($data[0]->Diagnostique);
 
         if (isset($data)) {
+            $createLogin = CreatLogin::where("idEnfant" , $idShow)->first();
             foreach ($data as $key => $index) {
                 $image = $index['photo'];
                 if(!isset($image)){
@@ -372,7 +454,23 @@ class ControllerUsers extends Controller
                                 <span for="" class="me-4">created ' . $index['type'] . ' : </span>
                                 <input type="text" readOnly name="created_at" placeholder="Medecin" value="' . $index['created_at'] . '" readonly>
                             </div>
-                 
+
+                      
+                            <div class="title mt-3 ps-4 m-3  p-2 fw-bolder fs-5 text-center">Connexion
+                            </div>
+
+                            <div class="UserName textAndInput noParmiter w-100  align-items-center">
+                            <span for="" class="me-4">Nom d\'utilisateur : </span>
+                            <input type="text"  readonly  value="' . $createLogin->UserName . '">
+                            
+                         </div>
+
+
+                     <div class="Login textAndInput noParmiter w-100  align-items-center" id="Login">
+                      <span for="" class="me-4">Login : </span>
+                      <input type="text" readonly value="' . $createLogin->login . '">
+                        <span onclick = "warning(`vous êtes abattu connexion Client` , `Restart` , `' . $index['nom'] . ' ' .  $index['Prenom'] . '` , `'.$index['id'].'` );" ><i class="bi bi-arrow-clockwise"></i></span>
+                    </div>
 
                                 <div class="delete mb-1 mt-4 ">
                                     <a href="#" data-type = "'.$index['type'].'" data-userName = "' . $index['nom'] . ' ' .  $index['Prenom'] . '"
@@ -407,6 +505,7 @@ class ControllerUsers extends Controller
         if($request->ajax()){
             $searchAdulte = adulte::query()->where('nom' , 'LIKE' , '%'.$request->search.'%' )
             ->orWhere('Prenom' , 'LIKE' , '%'.$request->search.'%')
+            ->orWhere('UserName' , 'LIKE' , '%'.$request->search.'%')
             ->orWhere('DateNaissance' , 'LIKE' , '%'.$request->search.'%')
             ->orWhere('tel' , 'LIKE' , '%'.$request->search.'%')
             ->orWhere('idClient' , 'LIKE' , '%'.$request->search.'%')
@@ -416,6 +515,7 @@ class ControllerUsers extends Controller
             ->join('parentenfants', 'enfants.idParent', '=', 'parentenfants.id')
             ->where('nom' , 'LIKE' , '%'.$request->search.'%'  ) 
             ->orWhere('Prenom' , 'LIKE' , '%'.$request->search.'%')
+            ->orWhere('UserName' , 'LIKE' , '%'.$request->search.'%')
             ->orWhere('DateNaissance' , 'LIKE' , '%'.$request->search.'%')
             ->orWhere('tel' , 'LIKE' , '%'.$request->search.'%')
             ->orWhere('idClient' , 'LIKE' , '%'.$request->search.'%')
@@ -507,5 +607,10 @@ class ControllerUsers extends Controller
             return response()->json($type);
         }
     }
+
+
+    // ===================listDocter==================================
+
+ 
 
 }

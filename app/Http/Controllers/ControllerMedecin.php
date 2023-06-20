@@ -184,8 +184,8 @@ class ControllerMedecin extends Controller
         if (isset($read)) {
 
     
-      
 
+      
             $htmlCode =  $this->GetTablData($read);
 
             // dd($index['id']);

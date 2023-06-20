@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerUsers;
 use App\Http\Controllers\ControllerMedecin;
 use App\Http\Controllers\ControllerDaily;
+use App\Http\Controllers\ControllerWolcomePage;
+
+use App\Http\Controllers\ControllerSignIn;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +19,21 @@ use App\Http\Controllers\ControllerDaily;
 |
 */
 
-Route::get('/', function () {
+
+// ========================Landing==========================Page====================
+
+Route::get('/' , function(){ return view('LandingPage.welcome'); } );
+
+Route::post('/Comment' , [ControllerWolcomePage::class , 'store'] )->name(('Comment.store'));
+
+Route::get('/showComment' , [ControllerWolcomePage::class , 'show'])->name('showComment.show');
+
+Route::get('/SiteStats' , [ControllerWolcomePage::class , 'Stats'])->name('SiteStats.Stats');
+
+
+
+
+Route::get('/dashboard', function () {
     return view('index');
 })->name('Home.index');
 
@@ -32,6 +49,9 @@ Route::get('/list-clients/read' , [ControllerUsers::class , 'readData'])->name('
 Route::get('/list-clients/{id}' , [ControllerUsers::class , 'show'])->name('list-clients.show');
 
 Route::get('/List-clinets/search' , [ControllerUsers::class , 'search'])->name('List-clinets.search');
+
+
+Route::get('/Restart/{id}' , [ControllerUsers::class , 'Restart'])->name('Restart');
 
 Route::post('/UpdateAdulte/{id}' , [ControllerUsers::class , 'updateAdulte'])->name('updateAdulte');
 
@@ -69,6 +89,13 @@ Route::get('/horaire/saerch' , [ControllerDaily::class , 'saerch'])->name('horai
 
 Route::get('/horaire/single/{id}' , [ControllerDaily::class , 'single'])->name('horaire.single');
 
-Route::get('/horaire/destroy/{id}' , [ControllerDaily::class , 'destroy'])->name('horaire.destroy');
+// Route::get('/horaire/destroy/{id}' , [ControllerDaily::class , 'destroy'])->name('horaire.single');
 
+// =================================================================================================
+
+Route::get('/connexion' , [ControllerSignIn::class , "index"])->name('connexion.index');
+
+Route::post('/create-Account' , [ControllerSignIn::class , "forstTime"])->name('connexion.forstTime');
+
+Route::post('/create-Account/new' , [ControllerSignIn::class , "newAccounr"])->name('createAccount.newAccounr');
 

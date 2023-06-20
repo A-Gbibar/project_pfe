@@ -19,6 +19,11 @@ input[type="submit"]{
     right: 0;
     bottom: 0;
 }
+.btn{
+    border-radius: 5px;
+    text-transform: capitalize;
+    background-color:  var(--ather-text-color);
+}
 .btn-create-user i{
     color: var(--ather-text-color) !important;
     transition: var( --main-trantion);

@@ -10,7 +10,7 @@ class adulte extends Model
 {
     use HasFactory;
     protected $fillable = [
-    'nom', 'Prenom', 'CINE' ,'Sexe', 'DateNaissance', 'tel', 'Address', 'Diagnostique', 'Medecin', 'photo'
+    'nom', 'Prenom', 'UserName' , 'CINE' ,'Sexe', 'DateNaissance', 'tel', 'Address', 'Diagnostique', 'Medecin', 'photo'
     ];
 
 

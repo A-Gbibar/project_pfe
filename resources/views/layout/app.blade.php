@@ -32,7 +32,7 @@
             <div class="menu d-flex justify-content-center flex-column w-100">
                 <a href="{{route('Home.index')}}" class=@yield('Home')>
                     <i class="bi bi-house-door-fill"></i>
-                    <span>Home</span>
+                    <span>Accueil</span>
                 </a>
                 <a href="{{route('horaire.index')}}" class=@yield('horaire')>
                     <i class="bi bi-calendar-check-fill"></i>
@@ -77,9 +77,9 @@
             <nav class="display-flex-spece-between ">
                 <h5 class="me-3 text-capitalize">@yield('TitleHead')</h5>
                 <div class="date">
-                    <span>05</span>
+                    <span>06</span>
                     <span>/</span>
-                    <span>26</span>
+                    <span>18</span>
                     <span>/</span> 
                     <span>2023</span>
                 </div>

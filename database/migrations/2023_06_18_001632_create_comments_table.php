@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('creat_logins', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idAdulte')->nullable();
-            $table->unsignedBigInteger('idEnfant')->nullable();
+            $table->string('photo')->nullable();
             $table->string('UserName');
-            $table->string('login');
+            $table->string('commentaire');
+            $table->integer('Evaluation')->where('Evaluation' , '<=' , 10);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('creat_logins');
+        Schema::dropIfExists('comments');
     }
 };

@@ -164,7 +164,11 @@ function warning(message, NameButton, UserName , id=0) {
     if (NameButton == "Update") {
         alert += `
         <button type="submit" class="btn-button" onclick="closeWorning();">${NameButton}</button></div></div>`;
-    }else{
+    }else if(NameButton == "Restart"){
+        alert += `
+        <button type="button" class="btn-button RestartButton"  onclick="Restart(${id});">${NameButton}</button></div></div>`;
+    }
+    else{
         alert += `
         <button type="button" class="btn-button deletButton" data-id = "${id}" onclick="closeWorning();">${NameButton}</button></div></div>`;
     }
