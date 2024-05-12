@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    Liste de clients
+    Liste des médecins  
 @endsection
 @section('linkCss')
     <link rel="stylesheet" href="../css/ListClient.css">

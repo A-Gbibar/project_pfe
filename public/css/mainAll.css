@@ -599,3 +599,7 @@ nav {
     height: auto !important;
     line-height: normal !important;
 }
+.date{
+    font-size: 1.1em;
+    font-weight: 600;
+}

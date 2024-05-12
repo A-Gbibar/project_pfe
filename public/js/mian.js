@@ -128,3 +128,21 @@ function alertErorr(massge) {
 function closeError() {
   document.querySelector(".errorAdd").classList.remove("active");
 }
+
+
+let user = document.querySelectorAll(".user");
+
+                            if (user.length > 6) {
+                            let comment = document.querySelector(".comment");
+                            comment.classList.toggle("show");
+                            let plusMore = document.querySelector(".plusMore");
+                            plusMore.innerHTML = "Montre plus..." + ` (+ ${user.length - 6}) `;
+                            plusMore.onclick = function () {
+                                comment.classList.toggle("active");
+                                if (plusMore.classList.toggle("changeText")) {
+                                plusMore.innerHTML = "cacher" +    ` (- ${user.length - 6}) `;
+                                } else {
+                                plusMore.innerHTML = "Montre plus..." + ` (+ ${user.length - 6}) `;
+                                }
+                            };
+                            }

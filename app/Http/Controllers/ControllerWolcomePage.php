@@ -47,10 +47,11 @@ class ControllerWolcomePage extends Controller
             $html1 = ' <button class="btn-button plusMore"></button> <ul class="commentListOne"> ';
             $html2 = '<ul class="commentListOne">';
             $html3 = '<ul class="commentListOne">';
-            foreach( $read as $key => $element ){
-                $namePhoto = $element->photo;
+            // foreach( $read as $key => $element ){
+                for( $m = count($read) - 1 ; $m > 0 ; $m-- ){
+                $namePhoto = $read[$m]->photo;
                 $photoPath = ($namePhoto !== null) ? '<img src="storage/' . $namePhoto . '" alt="" class="image">' : '<i class="bi bi-person-fill w-100 h-100"></i>';
-               $foramteDate=  $element->created_at->format('d/m/Y');
+               $foramteDate=  $read[$m]->created_at->format('d/m/Y');
                 if( $i == $j &&  $k == $i ){
                     $html1 .= '
                      <li>
@@ -58,12 +59,12 @@ class ControllerWolcomePage extends Controller
                             <div class="profile mb-2 display-flex-spece-between">
                                 <div class="image display-flex-spece-between">
                                     <span>'. $photoPath .'</span>
-                                    <span class="display-flex-center flex-column">'.$element->UserName.' <span> <i
-                                                class="bi bi-star-fill"></i> '.$element->Evaluation.'/10 </span> </span>
+                                    <span class="display-flex-center flex-column">'.$read[$m]->UserName.' <span> <i
+                                                class="bi bi-star-fill"></i> '.$read[$m]->Evaluation.'/10 </span> </span>
                                 </div>
                                 <span>'.$foramteDate.'</span>
                             </div>
-                            <p class="com"> '.$element->commentaire.' </p>
+                            <p class="com"> '.$read[$m]->commentaire.' </p>
                         </div>
 
                     </li>
@@ -76,12 +77,12 @@ class ControllerWolcomePage extends Controller
                         <div class="profile mb-2 display-flex-spece-between">
                             <div class="image display-flex-spece-between">
                                 <span>'. $photoPath .'</span>
-                                <span class="display-flex-center flex-column">'.$element->UserName.' <span> <i
-                                            class="bi bi-star-fill"></i> '.$element->Evaluation.'/10 </span> </span>
+                                <span class="display-flex-center flex-column">'.$read[$m]->UserName.' <span> <i
+                                            class="bi bi-star-fill"></i> '.$read[$m]->Evaluation.'/10 </span> </span>
                             </div>
                             <span>'.$foramteDate.'</span>
                         </div>
-                        <p class="com"> '.$element->commentaire.' </p>
+                        <p class="com"> '.$read[$m]->commentaire.' </p>
                     </div>
 
                 </li>
@@ -94,12 +95,12 @@ class ControllerWolcomePage extends Controller
                         <div class="profile mb-2 display-flex-spece-between">
                             <div class="image display-flex-spece-between">
                                 <span>'. $photoPath .'</span>
-                                <span class="display-flex-center flex-column">'.$element->UserName.' <span> <i
-                                            class="bi bi-star-fill"></i> '.$element->Evaluation.'/10 </span> </span>
+                                <span class="display-flex-center flex-column">'.$read[$m]->UserName.' <span> <i
+                                            class="bi bi-star-fill"></i> '.$read[$m]->Evaluation.'/10 </span> </span>
                             </div>
                             <span>'.$foramteDate.'</span>
                         </div>
-                        <p class="com"> '.$element->commentaire.' </p>
+                        <p class="com"> '.$read[$m]->commentaire.' </p>
                     </div>
 
                 </li>
@@ -114,7 +115,8 @@ class ControllerWolcomePage extends Controller
             
             $html = $html1 . ' ' . $html2 . ' ' . $html3; 
 
-        }
+        // }
+    }
 
         return response()->json($html);
     }

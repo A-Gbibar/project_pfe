@@ -262,3 +262,11 @@ table{
     background-color: #45bbff2f;
     border-radius: var(--border-radius);
 }
+
+.boxLink{
+    height: 229px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}

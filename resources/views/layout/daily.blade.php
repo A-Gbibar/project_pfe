@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title')
-    Liste de clients
+    horaire quotidien
 @endsection
 @section('linkCss')
     <!-- link materialize  -->
@@ -96,9 +96,8 @@
                             <div class="listUD  listDocter">
                                 
                             </div>
-                        </div>
-
-                    </div>
+                        </div> 
+                     </div>
 
                     <div class="texteArea  ">
                         <div class="Address mt-4 w-100  d-flex justify-content-center align-items-center">
@@ -370,7 +369,7 @@
     $.ajax({
         type:'GET',
         dataType:'json',
-        url:"/horaire/destroy/"+id,
+        url:"/horaire/delete/"+id,
         success:function(data){
          
             if(data.Erorr !== null){

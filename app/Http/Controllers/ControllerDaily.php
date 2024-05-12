@@ -45,7 +45,7 @@ class ControllerDaily extends Controller
                         $html .= '
                         <li class="Users"> 
                             <span > '. $photoPath.' </span>   
-                            <span class="id">'.$element->idClient .'</span>
+                            <span class="idU">'.$element->idClient .'</span>
                             <span> A </span>
                             <span class="userName">'.$element->nom .' ' .$element->Prenom.'</span> 
                         </li>
@@ -112,9 +112,8 @@ class ControllerDaily extends Controller
                 'description' => $request->description,
            ];
           $create =  daily::create($data);
-        //    dd($request);
 
-        return response()->json($create);
+        return response()->json(['UserNameUser'=>$request->UserNameUser ,  'idU' => $request->idUser ]);
 
         }else{
             return response()->json(['Error' => 'this is not writh all athribuite']);
@@ -145,22 +144,23 @@ class ControllerDaily extends Controller
         $read = daily::all();
         if( isset($read) ){
             $html = '';
-            foreach( $read as $element ){
+            // foreach( $read as $element ){
+                for( $i = count($read) - 1 ; $i >= 0 ; $i-- ){
     
-                $HourStart = $this->time12($element['HoureStart']);
-                $HoureFin = $this->time12($element['HoureFin']);
+                $HourStart = $this->time12($read[$i]['HoureStart']);
+                $HoureFin = $this->time12($read[$i]['HoureFin']);
 
                $html .= '
             <div class="subBoxDaily horaire H-one bodySection d-grid  position-relative align-items-center">
             <div class="AddDele position-absolute">
-                <a href="#" onclick="showData('.$element['id'].');" ><span>Modifier</span></a>
-                <a href="#"   onclick = "warning(`vous êtes à court Supprimer` , `Delet` , `' . $element['UserNameUser'] . '` , `' . $element['id'] . '`);"><span>Supprimer</span></a>
+                <a href="#" onclick="showData('.$read[$i]['id'].');" ><span>Modifier</span></a>
+                <a href="#"   onclick = "warning(`vous êtes à court Supprimer` , `Delet` , `' . $read[$i]['UserNameUser'] . '` , `' . $read[$i]['id'] . '`);"><span>Supprimer</span></a>
                 <i class="bi bi-caret-down-fill"></i>
             </div>
                <span class="time s-time"> <b>'.$HourStart.'</b></span>
-               <span class="name name-user">'.$element['UserNameUser'].'</span>
-               <span class="name name-doctor">'.$element['UserNameDocter'].'</span>
-               <span class="para">'.$element['description'].'</span>
+               <span class="name name-user">'.$read[$i]['UserNameUser'].'</span>
+               <span class="name name-doctor">'.$read[$i]['UserNameDocter'].'</span>
+               <span class="para">'.$read[$i]['description'].'</span>
                <span class="time e-time"><b>'. $HoureFin.'</b></span>
             </div>
                ';
@@ -280,7 +280,7 @@ class ControllerDaily extends Controller
     }
     //=============destroy=========================================
 
-    public function destroy($id){
+    public function delete($id){
         if( isset($id) ){
             $info = daily::query()->where('id' , $id)->first();
             $UserName = $info->UserNameUser;

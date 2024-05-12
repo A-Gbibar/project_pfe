@@ -76,12 +76,8 @@
         <div class="body-Home d-grid">
             <nav class="display-flex-spece-between ">
                 <h5 class="me-3 text-capitalize">@yield('TitleHead')</h5>
-                <div class="date">
-                    <span>06</span>
-                    <span>/</span>
-                    <span>18</span>
-                    <span>/</span> 
-                    <span>2023</span>
+                <div class="date" id="date">
+                
                 </div>
                 <div class="admin d-flex">
                     <span class="d-flex  flex-column align-items-center me-3">
@@ -103,6 +99,23 @@
 
     {{-- <!-- scrip bootstrap -->
     <script src="js/bootstrap.bundle.min.js"></script> --}}
+
+
+    <script>
+        var d = new Date();
+var year = d.getFullYear();
+var month = d.getMonth()+1;
+if( month < 10 ){
+    month = '0'+month;
+}
+var date = d.getDate();
+if(date < 10){
+    date = '0'+date;
+}
+var c_date =month + ' / ' + date + ' / ' + year;
+
+    $('.date').html(c_date);
+    </script>
 
     <script src="../js/listUser.js" ></script>
 

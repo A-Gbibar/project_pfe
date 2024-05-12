@@ -10,6 +10,7 @@ use App\Models\CreatLogin;
 use Ramsey\Uuid\Type\Integer;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Medecin;
 
 class ControllerUsers extends Controller
 {
@@ -611,6 +612,24 @@ class ControllerUsers extends Controller
 
     // ===================listDocter==================================
 
+    public function listDocter(){
+        $Medecin = Medecin::all();
+        $html = '
+        <option aria-readonly="readonly" readOnly class="title-select">chose Medecin</option>
+    
+        ';
+        if( isset($Medecin) ){
+            foreach($Medecin as $elment){
+
+            $html .= '
+            <option value="'.$elment['nom'].' '. $elment['prenom'] .'">'.$elment['nom'].' '. $elment['prenom'] .'</option>
+            ';
+        }
+
+            return response()->json($html);
+        }
+
+    }
  
 
 }

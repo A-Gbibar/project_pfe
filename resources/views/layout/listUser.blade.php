@@ -295,24 +295,9 @@
                         <div class="title mt-3  p-2 ps-4 m-3  mb-3   fw-bolder fs-5 text-center">
                             Lsit Medecin</div>
                         <div class="up-select display-flex-center w-100 h-100">
-                            <select class="form-select" name="MedecinChild[]" multiple
+                            <select class="form-select AllOption" name="MedecinChild[]" multiple
                                 aria-label="multiple select example">
-                                <option aria-readonly="readonly" readOnly class="title-select">chose Medecin</option>
-                                <option value="Aissa">Aissa</option>
-                                <option value="Gbibar">Gbibar</option>
-                                <option value="Mohamade">Mohamade</option>
-                                <option value="ousssma">ousssma</option>
-                                <option value="favie">favie</option>
-                                <option value="Aissa">Aissa</option>
-                                <option value="Gbibar">Gbibar</option>
-                                <option value="Mohamade">Mohamade</option>
-                                <option value="ousssma">ousssma</option>
-                                <option value="favie">favie</option>
-                                <option value="Aissa">Aissa</option>
-                                <option value="Gbibar">Gbibar</option>
-                                <option value="Mohamade">Mohamade</option>
-                                <option value="ousssma">ousssma</option>
-                                <option value="favie">favie</option>
+                              
                             </select>
                         </div>
                         <div class="nextButton w-100 mt-3 mb-3 pe-4 display-flex-center justify-content-end">
@@ -443,6 +428,23 @@
             $(this).parent().siblings().removeClass("active");
             $(this).parent().addClass("active");
         });
+
+        function listDocter(){
+            $.ajax({
+                type:'get',
+                dataType:'json',
+                url:'{{route('List-clinets.listDocter')}}',
+                success:function(data){
+                    $('.AllOption').html(data);
+                    console.log(data);
+                },
+                error:function(e){
+                    console.log(e);
+
+                }
+            })
+        }
+        listDocter();
 
         function readData(numberPage) {
             var page = $("#currentpage").val();
